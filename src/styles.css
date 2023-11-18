@@ -514,6 +514,7 @@ img {
   top: 0;
   left: 0;
   z-index: 1000;
+  transition: background-color 0.3s ease;
 }
 .header-area .palatin-main-menu {
   position: relative;
@@ -530,6 +531,7 @@ img {
   background-color: transparent;
   height: 150px;
   padding: 0;
+  transition: height 0.3s ease;
 }
 @media only screen and (max-width: 767px) {
   .header-area .palatin-main-menu .classy-navbar {
