@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+declare function load($: typeof jQuery): void;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

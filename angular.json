@@ -27,7 +27,14 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/jquery-2.2.4.min.js",
+              "src/active.js",
+              "src/assets/js/bootstrap/bootstrap.min.js",
+              "src/assets/js/bootstrap/popper.min.js",
+              "src/assets/js/plugins/plugins.js",
+              "node_modules/jquery/dist/jquery.min.js"
+            ]
           },
           "configurations": {
             "production": {
