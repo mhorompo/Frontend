@@ -14,6 +14,6 @@ export class HeaderComponent {
     const scrollPosition = window.pageYOffset;
 
     // Állítsa be a sticky állapotot az éppen görgetés helyzetétől függően
-    this.isSticky = scrollPosition >= 50; // Például, ha a görgetési pozíció eléri a 50 pixeles küszöbértéket
+    this.isSticky = scrollPosition >= 40; // Például, ha a görgetési pozíció eléri a 50 pixeles küszöbértéket
   }
 }

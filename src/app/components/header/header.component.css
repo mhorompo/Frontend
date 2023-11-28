@@ -1,11 +1,11 @@
 .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: #000;
-  }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #000;
+}
 
-  .sticky-height{
-    height: 90px !important;
-  }
+.sticky-height {
+  height: 90px !important;
+}

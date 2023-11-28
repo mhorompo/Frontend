@@ -1,0 +1,18 @@
+iframe {
+  border: 0;
+  width: 100%;
+  height: 61.6vh;
+}
+.map-content {
+  position: absolute;
+  z-index: 1;
+  width: 70%;
+  border: 2px solid #cb8670;
+  background-color: rgba(0, 0, 0, 0.63);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50%;
+}

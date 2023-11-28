@@ -8,5 +8,5 @@ declare function load($: typeof jQuery): void;
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Frontend';
+  title = 'The Palatin';
 }
