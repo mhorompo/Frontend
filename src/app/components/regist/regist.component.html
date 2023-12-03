@@ -16,12 +16,12 @@
                 border-radius: 1rem 0 0 1rem;
               "
             ></div>
-            <div class="col-md-6 col-lg-7 d-flex align-items-center">
+            <div class="col-md-4 col-lg-7 d-flex align-items-center">
               <div
-                class="card-body p-4 p-lg-5"
+                class="card-body p-2 p-lg-5"
                 style="border-radius: 0 1rem 1rem 0"
               >
-                <form>
+                <form (ngSubmit)="regist()">
                   <div class="d-flex align-items-center mb-3 pb-1">
                     <img
                       class="mr-15"
@@ -44,6 +44,7 @@
                       [(ngModel)]="email"
                       id="email"
                       class="form-control form-control-lg"
+                      ngModel
                     />
                     <label class="form-label text-black" for="email"
                       >Email address</label
@@ -56,6 +57,7 @@
                       [(ngModel)]="firstname"
                       id="firstname"
                       class="form-control form-control-lg"
+                      ngModel
                     />
                     <label class="form-label text-black" for="firstname"
                       >First Name</label
@@ -68,6 +70,7 @@
                       [(ngModel)]="lastname"
                       id="lastname"
                       class="form-control form-control-lg"
+                      ngModel
                     />
                     <label class="form-label text-black" for="lastname"
                       >Last Name</label
@@ -80,6 +83,7 @@
                       [(ngModel)]="password"
                       id="password"
                       class="form-control form-control-lg"
+                      ngModel
                     />
                     <label class="form-label text-black" for="password"
                       >Password</label
@@ -92,6 +96,7 @@
                       [(ngModel)]="passwordagain"
                       id="passwordagain"
                       class="form-control form-control-lg"
+                      ngModel
                     />
                     <label class="form-label text-black" for="passwordagain"
                       >Password again</label
