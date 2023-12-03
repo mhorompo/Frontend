@@ -9,3 +9,7 @@
 .sticky-height {
   height: 90px !important;
 }
+
+a{
+  cursor: pointer;
+}

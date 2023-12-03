@@ -5,7 +5,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ContentComponent } from './components/content/content.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegistComponent } from './components/regist/regist.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: 'not-found', component: NotFoundComponent },
@@ -14,6 +16,7 @@ const routes: Routes = [
   { path: 'regist', component: RegistComponent },
   { path: 'about', component: AboutUsComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
 ];
 
@@ -21,4 +24,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

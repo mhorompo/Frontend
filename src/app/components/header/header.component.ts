@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,8 @@ import { Component, HostListener } from '@angular/core';
 })
 export class HeaderComponent {
   isSticky: boolean = false;
+  isLogged?: boolean;
+  isAccomodation?: boolean;
 
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
@@ -15,5 +18,17 @@ export class HeaderComponent {
 
     // Állítsa be a sticky állapotot az éppen görgetés helyzetétől függően
     this.isSticky = scrollPosition >= 40; // Például, ha a görgetési pozíció eléri a 50 pixeles küszöbértéket
+  }
+
+  constructor(private auth: AuthService) { }
+
+  ngOnInit() {
+    this.isLogged = this.auth.isLoggedIn();
+    this.isAccomodation = this.auth.isAccomodation();
+  }
+
+  logout() {
+    this.auth.logout();
+    window.location.reload();
   }
 }

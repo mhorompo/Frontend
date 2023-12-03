@@ -5,21 +5,13 @@
     <div class="classy-nav-container breakpoint-off">
       <div class="container">
         <!-- Menu -->
-        <nav
-          class="classy-navbar justify-content-between"
-          [class.sticky-height]="isSticky"
-          id="palatinNav"
-        >
+        <nav class="classy-navbar justify-content-between" [class.sticky-height]="isSticky" id="palatinNav">
           <!-- Nav brand -->
-          <a routerLink="/" class="nav-brand"
-            ><img src="../assets/img/core-img/logo.png" alt=""
-          /></a>
+          <a routerLink="/" class="nav-brand"><img src="../assets/img/core-img/logo.png" alt="" /></a>
 
           <!-- Navbar Toggler -->
           <div class="classy-navbar-toggler">
-            <span class="navbarToggler"
-              ><span></span><span></span><span></span
-            ></span>
+            <span class="navbarToggler"><span></span><span></span><span></span></span>
           </div>
 
           <!-- Menu -->
@@ -34,27 +26,32 @@
             <!-- Nav Start -->
             <div class="classynav">
               <ul>
-                <li
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                >
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                   <a routerLink="/">Home</a>
                 </li>
-                <li
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: true }"
-                >
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                   <a routerLink="/about">About Us</a>
                 </li>
-                <li routerLinkActive="active">
+                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
                   <a routerLink="/contact">Contact</a>
                 </li>
-                <li><a routerLink="/login">login</a></li>
+                <li *ngIf="isLogged" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                  <a routerLink="/profile">Profile</a>
+                </li>
+                <li *ngIf="!isLogged">
+                  <a routerLink="/login">login</a>
+                </li>
+                <li *ngIf="isLogged">
+                  <a (click)="logout()">Logout</a>
+                </li>
               </ul>
 
               <!-- Button -->
-              <div class="menu-btn">
+              <div class="menu-btn" *ngIf="!isLogged">
                 <a routerLink="/regist" class="btn palatin-btn">Register</a>
+              </div>
+              <div class="menu-btn" *ngIf="isAccomodation">
+                <a routerLink="/accomodation" class="btn palatin-btn">New Accomodation</a>
               </div>
             </div>
             <!-- Nav End -->
