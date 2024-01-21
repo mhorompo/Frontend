@@ -28,4 +28,13 @@ export class LoginComponent {
     })
   }
 
+  toggleFieldTextType() {
+    const passwordInput = $("#password") as JQuery<HTMLInputElement>;
+
+    if (passwordInput.attr("type") === "password") {
+      passwordInput.attr("type", "text");
+    } else {
+      passwordInput.attr("type", "password");
+    }
+  }
 }

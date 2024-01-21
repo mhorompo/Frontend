@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 declare function load($: typeof jQuery): void;
 
 @Component({

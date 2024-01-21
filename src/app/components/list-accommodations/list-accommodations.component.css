@@ -1,0 +1,31 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+table {
+	width: 800px;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin-top: 15%;
+    text-align: center;
+}
+
+th {
+	background-color: #cb8670;
+    color: white;
+    font-size: large;
+    padding: 15px;
+}
+
+td{
+    padding: 15px;
+    text-align: center;
+    font-size: large;
+}
+
+h2{
+    margin-top: 25%;
+}
+
+.clickable{
+    cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<app-header></app-header>
+<section class="vh-100" style="background-image: url(../assets/img/core-img/pattern.png)">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col col-xl-10">
+                <div class="card background" style="border-radius: 1rem; margin-top: 135px;">
+                    <div class="row g-0">
+                        <div class="d-flex align-items-center">
+                            <div class="card-body p-2 p-lg-5" style="border-radius: 0 1rem 1rem 0;">
+
+                                
+                                <h2 *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black" style="letter-spacing: 1px">
+                                    {{accommodation.name}}
+                                </h2>
+                                
+                                <p *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black" style="letter-spacing: 1px"><i class="fa-solid fa-location-dot"></i> {{accommodation.streetName}}, {{accommodation.zipCode}}</p>
+                                
+                                <img src="/assets/img/hotel-room.jpg">
+                                <h5 *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black" style="letter-spacing: 1px">
+                                    {{accommodation.description}}
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

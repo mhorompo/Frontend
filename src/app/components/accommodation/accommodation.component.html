@@ -1,0 +1,66 @@
+<section class="main" style="background-image: url(../assets/img/core-img/pattern.png)">
+<app-header></app-header>
+    <div class="container p-0" style="margin-top: 140px ; width: 50%;">
+        <form (ngSubmit)="addAcc()">
+            <div class="card background p-5" style="border-radius: 1rem; margin-top: 135px;">
+                <h3 class="text-center">Accommodation info</h3>
+                <p class="text-center">Please enter your infomation and proceed to next step so we can register your accommodation</p>
+                <fieldset>
+                    <div class="fieldset-content">
+                        <div class="form-group">
+                            <label class="form-label">Name of Accommodation</label>
+                            <input type="text" name="accommodation_name" id="accommodation_name" [(ngModel)]="name"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" name="address" id="address" [(ngModel)]="streetName"/>
+                            <span class="text-input">Street Address</span>
+                        </div> 
+                        
+                        <div class="form-row">
+                            <div class="form-flex">
+                                <div class="form-group">
+                                    <input type="text" name="city" id="city" [(ngModel)]="city"/>
+                                    <span class="text-input">City</span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="postal_code" id="postal_code" [(ngModel)]="zipCode"/>
+                                    <span class="text-input">Postal Code / Zip Code</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="image" class="form-label">Accommodation Image</label>
+                            <input type="file" name="image" id="image" (change)="onFileSelected($event)"/>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-flex">
+                                <div class="form-group">
+                                    <input type="text" name="latitude" id="latitude" [(ngModel)]="latitude"/>
+                                    <span class="text-input">Latitude</span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="longitude" id="longitude" [(ngModel)]="longitude"/>
+                                    <span class="text-input">Longitude</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea name="description" id="description" rows="6" cols="10" [(ngModel)]="description"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="pt-1 mb-4 text-center">
+                    <button class="btn color-main btn-lg btn-block" type="submit">Regist new Accommodation</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</section>
+<app-footer></app-footer>

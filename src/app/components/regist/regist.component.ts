@@ -17,7 +17,7 @@ export class RegistComponent {
   passwordagain: string = '';
   roleEnum: string = 'USER';
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router) {}
 
   regist() {
     const data: SignupUser = {
@@ -25,14 +25,14 @@ export class RegistComponent {
       firstName: this.firstName,
       lastName: this.lastName,
       password: this.password,
-      roleEnum: this.roleEnum
-    }
+      roleEnum: this.roleEnum,
+    };
     this.auth.regist(data).subscribe((response: User) => {
       if (response) {
         localStorage.setItem('login', JSON.stringify(response));
-        this.router.navigateByUrl("/");
+        this.router.navigateByUrl('/');
       }
       console.log(response);
-    })
+    });
   }
 }

@@ -5,19 +5,18 @@ import { SignupUser } from '../model/Signupuser';
 import { User } from '../model/User';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
   baseUrl: string = 'http://localhost:8080';
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   regist(data: SignupUser) {
-    return this.http.post<User>(`${this.baseUrl}/user/signup`, data)
+    return this.http.post<User>(`${this.baseUrl}/user/signup`, data);
   }
 
   login(data: LoginUser) {
-    return this.http.post<User>(`${this.baseUrl}/user/login`, data)
+    return this.http.post<User>(`${this.baseUrl}/user/login`, data);
   }
 
   isLoggedIn() {
@@ -27,11 +26,11 @@ export class AuthService {
     } else return false;
   }
 
-  isAccomodation() {
+  isHost() {
     const login = localStorage.getItem('login');
     if (login) {
       const loginJSON: User = JSON.parse(login);
-      if (loginJSON.roleEnum == 'ACCOMODATION') {
+      if (loginJSON.roleEnum == 'ACCOMMODATION') {
         return true;
       }
     }
@@ -43,6 +42,6 @@ export class AuthService {
   }
 
   update(data: SignupUser, id: number) {
-    return this.http.put<User>(`${this.baseUrl}/user/update/${id}`, data)
+    return this.http.put<User>(`${this.baseUrl}/user/update/${id}`, data);
   }
 }
