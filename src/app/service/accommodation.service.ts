@@ -3,18 +3,20 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Accommodation } from 'src/app/model/Accommodation';
 import { AccommodationWithId } from '../model/AccommodationWithId';
+import { DateData } from '../model/DateData';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccommodationService {
-  
+
   baseUrl: string = 'http://localhost:8080';
-  constructor(private http: HttpClient) {}
-  
-  addAccommodation(data: Accommodation){
+  constructor(private http: HttpClient) { }
+
+  addAccommodation(data: Accommodation) {
     const userDataString = localStorage.getItem('login');
-    if(userDataString){
+
+    if (userDataString) {
       const userData = JSON.parse(userDataString);
       const userId = userData.id;
       data.userId = +userId; // A + operátor az azonosítót számként kezeli
@@ -27,23 +29,22 @@ export class AccommodationService {
     return this.http.get<AccommodationWithId[]>(`${this.baseUrl}/accommodation/getAllAccommodations`);
   }
 
-  getAccommodationById(id: number): Observable<AccommodationWithId>{
+  getAccommodationById(id: number): Observable<AccommodationWithId> {
     return this.http.get<AccommodationWithId>(`${this.baseUrl}/accommodation/getAcc/${id}`);
   }
 
   getAllAccommodationByUserId(): Observable<AccommodationWithId[]> {
     let id;
     const userDataString = localStorage.getItem('login');
-    if(userDataString){
+    if (userDataString) {
       const userData = JSON.parse(userDataString);
       const userId = userData.id;
       id = userId;
-      console.log(userId);
     }
     return this.http.get<AccommodationWithId[]>(`${this.baseUrl}/accommodation/getAllAccommodationByUserId/${id}`);
   }
 
-  updateAccomodation(data: Accommodation, accommodationId: number){
+  updateAccomodation(data: Accommodation, accommodationId: number) {
     return this.http.put<Accommodation>(`${this.baseUrl}/accommodation/updateAccommodation/${accommodationId}`, data);
   }
 
@@ -51,7 +52,19 @@ export class AccommodationService {
     return this.http.delete(`${this.baseUrl}/accommodation/deleteAccommodation/${accommodationId}`);
   }
 
-  uploadImage(formData: FormData) {
-    return this.http.post(`${this.baseUrl}/accommodation/uploadImage`, formData);
+  uploadImage(formData: FormData, id: number) {
+    return this.http.post(`${this.baseUrl}/image/uploadImage/${id}`, formData);
+  }
+
+  getImages(id: number) {
+    return this.http.get(`${this.baseUrl}/image/getImagesById/${id}`);
+  }
+
+  getImagesById(id: number) {
+    return this.http.get(`${this.baseUrl}/image/getImagesById/${id}`);
+  }
+
+  newReservation(userId: number, accommodationId: number, data: DateData) {
+    return this.http.post(`${this.baseUrl}/reservation/reserveAccommodation/${userId}/${accommodationId}`, data);
   }
 }

@@ -18,66 +18,62 @@ export class AccommodationComponent {
   description: string = "";
   longitude: number = 0.0;
   latitude: number = 0.0;
-  mapsAPILoader: any;
+  price: any;
   address: string | null | undefined;
-  
-  constructor(private accommodation: AccommodationService, private router: Router, mapsAPILoader: MapsAPILoader) { }
-  
-  onFileSelected(event: any) {
-    const file: File = event.target.files[0];
-    this.uploadImage(file);
+
+  constructor(private accommodation: AccommodationService, private router: Router, private mapsAPILoader: MapsAPILoader) {
   }
 
-  uploadImage(file: File) {
-    const formData: FormData = new FormData();
-    formData.append('file', file, file.name);
-
-    // Most elküldjük a formData-t a szerverre
-    this.accommodation.uploadImage(formData).subscribe(
-      response => {
-        console.log('Image uploaded successfully:', response);
-        // Ha szükséges, itt további lépéseket tehetsz, például a szerver által visszaadott kép URL-jének kezelése
-      },
-      error => {
-        console.error('Error uploading image:', error);
-      }
-    );
-  }
-
-  geocode() {
+  geocode(): Promise<void> {
     const address = `${this.streetName}, ${this.zipCode}, ${this.city}`;
-    this.mapsAPILoader.load().then(() => {
+
+    return new Promise<void>(async (resolve, reject) => {
+      await this.mapsAPILoader.load();
       const geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ address: this.address }, (results, status) => {
+      geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK' && results && results.length > 0) {
-          this.longitude = results[0].geometry.location.lat();
-          this.latitude = results[0].geometry.location.lng();
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+          resolve();
         } else {
           console.error('Geocoding failed. Status:', status);
+          reject();
         }
       });
     });
   }
 
-  addAcc() {
-    this.geocode();
-    
-    const data: Accommodation = {
-      userId: this.userId,
-      name: this.name,
-      city: this.city,
-      zipCode: this.zipCode,
-      streetName: this.streetName,
-      description: this.description,
-      longitude: this.longitude,
-      latitude: this.latitude,
-    };
+  selectedFile: File | null = null;
 
-    this.accommodation.addAccommodation(data).subscribe((response: Accommodation) => {
-      if(response) {
-        this.router.navigateByUrl('/');
-      }
-      console.log(response);
+  onFileSelected(event: any) {
+    const files: File = event.target.files[0];
+    console.log(files);
+    this.selectedFile = files;
+  }
+
+  addAcc() {
+    this.geocode().then(() => {
+      const data: Accommodation = {
+        userId: this.userId,
+        name: this.name,
+        city: this.city,
+        zipCode: this.zipCode,
+        streetName: this.streetName,
+        description: this.description,
+        longitude: this.longitude,
+        latitude: this.latitude,
+        price: this.price
+      };
+
+      this.accommodation.addAccommodation(data).subscribe((response: Accommodation) => {
+        if (response && response.id) {
+          /*this.accommodation.uploadImage(formData, response.id).subscribe(uploadLog => {
+            console.log(uploadLog);
+          });*/
+          this.router.navigateByUrl('/');
+        }
+        console.log(response);
+      });
     });
   }
 

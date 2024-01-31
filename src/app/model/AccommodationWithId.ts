@@ -1,4 +1,5 @@
 export interface AccommodationWithId {
+    price: any;
     id: number;
     name: string;
     city: string;

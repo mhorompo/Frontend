@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MapsAPILoader } from '@ng-maps/core';
 import { Accommodation } from 'src/app/model/Accommodation';
 import { AccommodationService } from 'src/app/service/accommodation.service';
 
@@ -17,8 +18,9 @@ export class EditAccommodationComponent implements OnInit {
   latitude: any;
   longitude: any;
   description: any;
+  price: any;
 
-  constructor(private route: ActivatedRoute, private accommodation: AccommodationService) {}
+  constructor(private route: ActivatedRoute, private accommodation: AccommodationService, private mapsAPILoader: MapsAPILoader) { }
 
   ngOnInit() {
     // Feliratkozunk az ActivatedRoute paraméter változásaira
@@ -43,6 +45,7 @@ export class EditAccommodationComponent implements OnInit {
         this.latitude = data.latitude;
         this.longitude = data.longitude;
         this.description = data.description;
+        this.price = data.price;
       },
       error => {
         console.error('Hiba történt az adatok lekérésekor:', error);
@@ -50,20 +53,41 @@ export class EditAccommodationComponent implements OnInit {
     );
   }
 
-  editAccommodation() {
-    const data: Accommodation = {
-      userId: 0,
-      name: this.name,
-      streetName: this.streetName,
-      city: this.city,
-      zipCode: this.zipCode,
-      latitude: this.latitude,
-      longitude: this.longitude,
-      description: this.description
-    }
+  geocode(): Promise<void> {
+    const address = `${this.streetName}, ${this.zipCode}, ${this.city}`;
 
-    this.accommodation.updateAccomodation(data, this.accommodationId).subscribe((response: Accommodation) => {
-      window.location.reload();
-    });;
+    return new Promise<void>(async (resolve, reject) => {
+      await this.mapsAPILoader.load();
+      const geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === 'OK' && results && results.length > 0) {
+          this.latitude = results[0].geometry.location.lat();
+          this.longitude = results[0].geometry.location.lng();
+          resolve();
+        } else {
+          console.error('Geocoding failed. Status:', status);
+          reject();
+        }
+      });
+    });
+  }
+
+  editAccommodation() {
+    this.geocode().then(() => {
+      const data: Accommodation = {
+        userId: 0,
+        name: this.name,
+        streetName: this.streetName,
+        city: this.city,
+        zipCode: this.zipCode,
+        latitude: this.latitude,
+        longitude: this.longitude,
+        description: this.description,
+        price: this.price
+      }
+      this.accommodation.updateAccomodation(data, this.accommodationId).subscribe((response: Accommodation) => {
+        window.location.reload();
+      });;
+    });
   }
 }

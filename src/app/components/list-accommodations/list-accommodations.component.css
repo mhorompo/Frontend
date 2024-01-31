@@ -1,31 +1,39 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
 table {
-	width: 800px;
-	border-collapse: collapse;
-	overflow: hidden;
-	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 800px;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     margin-top: 15%;
     text-align: center;
+    box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+    border-radius: 12px;
 }
 
 th {
-	background-color: #cb8670;
+    background-color: #cb8670;
     color: white;
     font-size: large;
     padding: 15px;
 }
 
-td{
+td {
     padding: 15px;
     text-align: center;
     font-size: large;
 }
 
-h2{
+h2 {
     margin-top: 25%;
 }
 
-.clickable{
+.clickable {
     cursor: pointer;
+}
+
+body {
+    font-family: "FuturaLT-Book";
+    font-size: 14px;
+    background-image: url(../../../assets/img/core-img/pattern.png)
 }

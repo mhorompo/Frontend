@@ -1,4 +1,5 @@
 export interface Accommodation {
+    id?: number;
     userId: number;
     name: string;
     city: string;
@@ -7,4 +8,5 @@ export interface Accommodation {
     description: string;
     longitude: number;
     latitude: number;
+    price: any;
 }

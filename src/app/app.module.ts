@@ -1,10 +1,11 @@
-import { AgmCoreModule } from '@agm/core';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgMapsCoreModule } from '@ng-maps/core';
 import { GOOGLE_MAPS_API_CONFIG, NgMapsGoogleModule } from '@ng-maps/google';
+import * as jQuery from 'jquery';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
@@ -56,9 +57,7 @@ declare function load($: typeof jQuery): void;
     HttpClientModule,
     NgMapsCoreModule,
     NgMapsGoogleModule,
-    AgmCoreModule,forRoot({
-      apiKey: 'AIzaSyB0KN7MX380UHS6l7F6tQ_HJDSx4iRbegY',
-    })
+    NgxDaterangepickerMd.forRoot()
   ],
   providers: [
     {
@@ -70,7 +69,7 @@ declare function load($: typeof jQuery): void;
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
 function forRoot(arg0: { apiKey: string; }): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
   throw new Error('Function not implemented.');
 }

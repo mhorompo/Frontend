@@ -33,3 +33,9 @@
 .pass{
   border-radius: 0.5rem 0 0 0.5rem;
 }
+
+body {
+  font-family: "FuturaLT-Book";
+  font-size: 14px;
+  background-image: url(../../../assets/img/core-img/pattern.png)
+}

@@ -9,19 +9,27 @@ import { AccommodationService } from 'src/app/service/accommodation.service';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
-export class HeroComponent implements OnInit{
+export class HeroComponent implements OnInit {
 
   accommodations: AccommodationWithId[] = [];
 
-    constructor(private accommodationService: AccommodationService, private router: Router) {}
+  constructor(private accommodationService: AccommodationService, private router: Router) { }
 
-    ngOnInit() {
-        this.accommodationService.getAccommodations().subscribe(acc => {
-            this.accommodations = acc;
-        });
-    }
+  ngOnInit() {
+    this.accommodationService.getAccommodations().subscribe(acc => {
+      this.accommodations = acc;
+    });
+  }
 
-    click(id: number) {
-      this.router.navigate(['/viewAccommodation/' + id]);
-    }
+  click(id: number) {
+    this.router.navigate(['/viewAccommodation/' + id]);
+  }
+
+  openDialog(id: number) {
+
+  }
+
+  closeDialog() {
+
+  }
 }

@@ -9,7 +9,7 @@ import { User } from '../model/User';
 })
 export class AuthService {
   baseUrl: string = 'http://localhost:8080';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   regist(data: SignupUser) {
     return this.http.post<User>(`${this.baseUrl}/user/signup`, data);
@@ -43,5 +43,14 @@ export class AuthService {
 
   update(data: SignupUser, id: number) {
     return this.http.put<User>(`${this.baseUrl}/user/update/${id}`, data);
+  }
+
+  getLoggedInUserId() {
+    const login = localStorage.getItem('login');
+    if (login) {
+      const loginJSON: User = JSON.parse(login);
+      return loginJSON.id;
+    }
+    return null;
   }
 }

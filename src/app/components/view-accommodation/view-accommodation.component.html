@@ -1,6 +1,6 @@
 <app-header></app-header>
 <section class="vh-100" style="background-image: url(../assets/img/core-img/pattern.png)">
-    <div class="container py-5 h-100">
+    <div class="container margin py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col col-xl-10">
                 <div class="card background" style="border-radius: 1rem; margin-top: 135px;">
@@ -8,17 +8,33 @@
                         <div class="d-flex align-items-center">
                             <div class="card-body p-2 p-lg-5" style="border-radius: 0 1rem 1rem 0;">
 
-                                
-                                <h2 *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black" style="letter-spacing: 1px">
+                                <h2 *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black"
+                                    style="letter-spacing: 1px">
                                     {{accommodation.name}}
                                 </h2>
-                                
-                                <p *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black" style="letter-spacing: 1px"><i class="fa-solid fa-location-dot"></i> {{accommodation.streetName}}, {{accommodation.zipCode}}</p>
-                                
-                                <img src="/assets/img/hotel-room.jpg">
-                                <h5 *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black" style="letter-spacing: 1px">
+
+                                <p *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black"
+                                    style="letter-spacing: 1px"><i class="fa-solid fa-location-dot"></i>
+                                    {{accommodation.streetName}}, {{accommodation.zipCode}}</p>
+                                <hr>
+
+                                <img src="../../../assets/img/bg-img/bg-5.jpg" alt="" srcset="">
+
+                                <p *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black"
+                                    style="letter-spacing: 1px">
                                     {{accommodation.description}}
-                                </h5>
+                                </p>
+
+                                <form (ngSubmit)="newReservation()">
+                                    <input type="text" matInput ngxDaterangepickerMd
+                                        [locale]="{applyLabel: 'ok', firstDay: 1,  format: 'YYYY-MM-DD'}"
+                                        startKey="start" endKey="end" [(ngModel)]="selected" name="daterange"
+                                        [autoApply]="true" class="form-control-lg form-control" />
+
+                                    <div class="pt-1 mb-4 text-center">
+                                        <button class="btn color-main btn-lg btn-block" type="submit">Reserve</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
