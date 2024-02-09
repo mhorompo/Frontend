@@ -12,3 +12,16 @@
   background-color: #cb8670;
   color: white;
 }
+
+input.error {
+  border: 1px solid #f63726;
+}
+
+.feedback {
+  margin-top: 10px;
+}
+
+button{
+  border-radius: 12px;
+  cursor: pointer;
+}

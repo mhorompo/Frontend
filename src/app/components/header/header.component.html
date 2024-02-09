@@ -1,6 +1,9 @@
 <header class="header-area">
   <!-- Navbar Area -->
-  <div class="palatin-main-menu" [ngClass]="{'scrolled': isScrolled, 'not-scrolled': !isScrolled}">
+  <div
+    class="palatin-main-menu"
+    [ngClass]="{ scrolled: isScrolled, 'not-scrolled': !isScrolled }"
+  >
     <div class="breakpoint-off">
       <div class="container">
         <!-- Menu -->
@@ -12,23 +15,33 @@
 
           <!-- Menu -->
           <div class="classy-menu">
-
             <!-- Nav Start -->
             <div class="classynav">
               <ul>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
                   <a routerLink="/">Home</a>
                 </li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <li
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
                   <a routerLink="/about">About Us</a>
                 </li>
-                <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                  <a routerLink="/contact">Contact</a>
-                </li>
-                <li *ngIf="isLogged" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <li
+                  *ngIf="isLogged"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
                   <a routerLink="/profile">Profile</a>
                 </li>
-                <li *ngIf="isHost" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <li
+                  *ngIf="isHost"
+                  routerLinkActive="active"
+                  [routerLinkActiveOptions]="{ exact: true }"
+                >
                   <a routerLink="/listAccommodations">Accommodations</a>
                 </li>
                 <li *ngIf="!isLogged">
@@ -44,7 +57,9 @@
                 <a routerLink="/regist" class="btn palatin-btn">Register</a>
               </div>
               <div class="menu-btn" *ngIf="isHost">
-                <a routerLink="/accommodation" class="btn palatin-btn">New Accommodation</a>
+                <a routerLink="/accommodation" class="btn palatin-btn"
+                  >New Accommodation</a
+                >
               </div>
             </div>
             <!-- Nav End -->

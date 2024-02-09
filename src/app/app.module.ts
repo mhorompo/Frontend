@@ -1,6 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgMapsCoreModule } from '@ng-maps/core';
 import { GOOGLE_MAPS_API_CONFIG, NgMapsGoogleModule } from '@ng-maps/google';
@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AccommodationComponent } from './components/accommodation/accommodation.component';
 import { BookNowComponent } from './components/book-now/book-now.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { ContentComponent } from './components/content/content.component';
 import { EditAccommodationComponent } from './components/edit-accommodation/edit-accommodation.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -40,7 +39,6 @@ declare function load($: typeof jQuery): void;
     AboutUsComponent,
     PoolAreaComponent,
     RoomsAreaComponent,
-    ContactComponent,
     LoginComponent,
     RegistComponent,
     AboutUsComponent,
@@ -57,7 +55,8 @@ declare function load($: typeof jQuery): void;
     HttpClientModule,
     NgMapsCoreModule,
     NgMapsGoogleModule,
-    NgxDaterangepickerMd.forRoot()
+    NgxDaterangepickerMd.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
     {

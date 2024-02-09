@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AccommodationComponent } from './components/accommodation/accommodation.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { ContentComponent } from './components/content/content.component';
 import { EditAccommodationComponent } from './components/edit-accommodation/edit-accommodation.component';
 import { ListAccommodationsComponent } from './components/list-accommodations/list-accommodations.component';
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'regist', component: RegistComponent },
   { path: 'about', component: AboutUsComponent },
-  { path: 'contact', component: ContactComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'accommodation', component: AccommodationComponent, canActivate: [AuthGuard] },
   { path: 'viewAccommodation/:id', component: ViewAccommodationComponent, canActivate: [AuthGuard] },

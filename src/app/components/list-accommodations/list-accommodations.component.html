@@ -1,29 +1,36 @@
 <app-header></app-header>
 <div class="container">
-    <div class="row justify-content-center" >
-        <table class="table" *ngIf="accommodations?.length != 0">
-            <thead>
-                <tr>
-                    <th>Accommodation Name</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let acc of accommodations">
-                    <td (click)="click(acc.id)"><span class="clickable">{{ acc.name }}</span></td>
-                    <td>
-                        <button class="btn btn-success" (click)="editAccommodation(acc.id)">
-                            <i class="fas fa-pen-square"></i> Edit
-                        </button>
-                        /
-                        <button class="btn btn-danger" (click)="deleteAccommodation(acc.id)">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+  <div class="row justify-content-center">
+    <table class="table" *ngIf="accommodations?.length != 0">
+      <thead>
+        <tr>
+          <th>Accommodation Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let acc of accommodations">
+          <td (click)="click(acc.id)">
+            <span class="clickable">{{ acc.name }}</span>
+          </td>
+          <td>
+            <button class="btn btn-success" (click)="editAccommodation(acc.id)">
+              <i class="fas fa-pen-square"></i> Edit
+            </button>
+            /
+            <button
+              class="btn btn-danger"
+              (click)="deleteAccommodation(acc.id)"
+            >
+              <i class="fas fa-trash"></i> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-        <h2 class="text-center" *ngIf="accommodations?.length == 0">You don't have any accommodations uploaded!</h2>
-    </div>
+    <h2 class="text-center" *ngIf="accommodations?.length == 0">
+      You don't have any accommodations uploaded!
+    </h2>
+  </div>
 </div>

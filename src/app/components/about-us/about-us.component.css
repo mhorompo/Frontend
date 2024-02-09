@@ -1,0 +1,9 @@
+a {
+  border-radius: 12px;
+}
+
+.background {
+  box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+}

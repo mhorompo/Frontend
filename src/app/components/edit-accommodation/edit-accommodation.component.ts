@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MapsAPILoader } from '@ng-maps/core';
 import { Accommodation } from 'src/app/model/Accommodation';
@@ -19,8 +20,18 @@ export class EditAccommodationComponent implements OnInit {
   longitude: any;
   description: any;
   price: any;
+  editAcc: FormGroup;
 
-  constructor(private route: ActivatedRoute, private accommodation: AccommodationService, private mapsAPILoader: MapsAPILoader) { }
+  constructor(private route: ActivatedRoute, private accommodation: AccommodationService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder) {
+    this.editAcc = this.fb.group({
+      name: ["", Validators.required],
+      streetName: ["", Validators.required],
+      city: ["", Validators.required],
+      zipCode: ["", Validators.required],
+      description: ["", Validators.required],
+      price: ["", Validators.required]
+    });
+  }
 
   ngOnInit() {
     // Feliratkozunk az ActivatedRoute paraméter változásaira
@@ -38,14 +49,14 @@ export class EditAccommodationComponent implements OnInit {
     this.accommodation.getAccommodationById(this.accommodationId).subscribe(
       data => {
         // Az adatok beállítása a komponens mezőire
-        this.name = data.name;
-        this.streetName = data.streetName;
-        this.city = data.city;
-        this.zipCode = data.zipCode;
-        this.latitude = data.latitude;
-        this.longitude = data.longitude;
-        this.description = data.description;
-        this.price = data.price;
+        this.editAcc.patchValue({
+          name: data.name,
+          streetName: data.streetName,
+          city: data.city,
+          zipCode: data.zipCode,
+          description: data.description,
+          price: data.price
+        })
       },
       error => {
         console.error('Hiba történt az adatok lekérésekor:', error);
@@ -54,7 +65,7 @@ export class EditAccommodationComponent implements OnInit {
   }
 
   geocode(): Promise<void> {
-    const address = `${this.streetName}, ${this.zipCode}, ${this.city}`;
+    const address = `${this.editAcc.get("streetName")?.value}, ${this.editAcc.get("zipCode")?.value}, ${this.editAcc.get("city")?.value}`;
 
     return new Promise<void>(async (resolve, reject) => {
       await this.mapsAPILoader.load();
@@ -76,18 +87,22 @@ export class EditAccommodationComponent implements OnInit {
     this.geocode().then(() => {
       const data: Accommodation = {
         userId: 0,
-        name: this.name,
-        streetName: this.streetName,
-        city: this.city,
-        zipCode: this.zipCode,
+        name: this.editAcc.get("name")?.value,
+        streetName: this.editAcc.get("streetName")?.value,
+        city: this.editAcc.get("city")?.value,
+        zipCode: this.editAcc.get("zipCode")?.value,
         latitude: this.latitude,
         longitude: this.longitude,
-        description: this.description,
-        price: this.price
+        description: this.editAcc.get("description")?.value,
+        price: this.editAcc.get("price")?.value
       }
       this.accommodation.updateAccomodation(data, this.accommodationId).subscribe((response: Accommodation) => {
         window.location.reload();
       });;
     });
+  }
+
+  isError(field: string): boolean {
+    return this.editAcc.get(field)?.errors != null;
   }
 }
