@@ -24,12 +24,4 @@ export class HeroComponent implements OnInit {
   click(id: number) {
     this.router.navigate(['/viewAccommodation/' + id]);
   }
-
-  openDialog(id: number) {
-
-  }
-
-  closeDialog() {
-
-  }
 }

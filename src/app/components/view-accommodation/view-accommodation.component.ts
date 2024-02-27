@@ -15,6 +15,7 @@ export class ViewAccommodationComponent {
   accommodation!: AccommodationWithId;
   selected?: any;
   userId?: number;
+  imageUrl: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,6 +30,13 @@ export class ViewAccommodationComponent {
     }
     this.accommodationService.getAccommodationById(this.id).subscribe(data => {
       this.accommodation = data;
+    });
+    this.accommodationService.getImage(this.id).subscribe((data: Blob) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imageUrl = reader.result;
+      };
+      reader.readAsDataURL(data);
     });
   }
 

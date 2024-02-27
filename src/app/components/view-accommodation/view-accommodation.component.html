@@ -8,17 +8,40 @@
                         <div class="d-flex align-items-center">
                             <div class="card-body p-2 p-lg-5" style="border-radius: 0 1rem 1rem 0;">
 
-                                <h2 *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black"
-                                    style="letter-spacing: 1px">
+                                <h2 *ngIf="accommodation" class="fw-normal text-black" style="letter-spacing: 1px">
                                     {{accommodation.name}}
                                 </h2>
 
-                                <p *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black"
-                                    style="letter-spacing: 1px"><i class="fa-solid fa-location-dot"></i>
+                                <p *ngIf="accommodation" class="fw-normal text-black" style="letter-spacing: 1px"><i
+                                        class="fa-solid fa-location-dot"></i>
                                     {{accommodation.streetName}}, {{accommodation.zipCode}}</p>
                                 <hr>
 
-                                <img src="../../../assets/img/bg-img/bg-5.jpg" alt="" srcset="">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col col-8">
+                                            <img class="pic" [src]="imageUrl" alt="Missing picture">
+                                        </div>
+                                        <div class="col-4">
+                                            <h4 class="features" *ngIf="accommodation.freeParking"><i
+                                                    class="fa-solid fa-square-parking"></i>Free Parking</h4>
+                                            <h4 class="features" *ngIf="accommodation.airConditioning"><i
+                                                    class="fa-solid fa-wind"></i>Air Conditioning
+                                            </h4>
+                                            <h4 class="features" *ngIf="accommodation.barrierFree"><i
+                                                    class="fa-solid fa-wheelchair"></i>Barrier Free</h4>
+                                            <h4 class="features" *ngIf="accommodation.breakfastIncluded"><i
+                                                    class="fa-solid fa-mug-saucer"></i>Breakfast
+                                                included</h4>
+                                            <h4 class="features" *ngIf="accommodation.freeWifi"><i
+                                                    class="fa-solid fa-wifi"></i>Free Wi-fi</h4>
+                                            <h4 class="features" *ngIf="accommodation.reception"><i
+                                                    class="fa-solid fa-phone"></i>24/7 Reception</h4>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
 
                                 <p *ngIf="accommodation" class="fw-normal mb-3 pb-3 text-black"
                                     style="letter-spacing: 1px">

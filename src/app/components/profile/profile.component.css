@@ -26,18 +26,6 @@ body {
   background-image: url(../../../assets/img/core-img/pattern.png);
 }
 
-input {
-  width: 100%;
-  display: block;
-  border: 1px solid #ebebeb;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 0 20px;
-  color: #222;
-  font-weight: bold;
-  font-size: 14px;
-}
-
 .feedback {
   margin-top: 15px;
 }
@@ -76,6 +64,6 @@ input.error {
   color: white;
 }
 
-button{
+button {
   border-radius: 12px;
 }

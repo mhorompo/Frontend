@@ -14,9 +14,13 @@ iframe {
   right: 0;
   top: 15%;
   margin: auto;
-  height: 50%;
+  height: 80%;
 }
 
 map-view {
   height: 100%;
+}
+
+img {
+  height: 100vh !important;
 }

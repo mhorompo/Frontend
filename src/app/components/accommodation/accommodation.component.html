@@ -1,14 +1,8 @@
-<section
-  class="main"
-  style="background-image: url(../assets/img/core-img/pattern.png)"
->
+<section class="main" style="background-image: url(../assets/img/core-img/pattern.png)">
   <app-header></app-header>
   <div class="container p-0" style="margin-top: 140px; width: 50%">
-    <form (ngSubmit)="addAcc()">
-      <div
-        class="card background p-5"
-        style="border-radius: 1rem; margin-top: 135px"
-      >
+    <form (ngSubmit)="addAcc()" [formGroup]="addAccommodation">
+      <div class="card background p-5" style="border-radius: 1rem; margin-top: 135px">
         <h3 class="text-center">Accommodation info</h3>
         <p class="text-center">
           Please enter your infomation and proceed to next step so we can
@@ -18,63 +12,105 @@
           <div class="fieldset-content">
             <div class="form-group">
               <label class="form-label">Name of Accommodation</label>
-              <input
-                type="text"
-                name="accommodation_name"
-                id="accommodation_name"
-                [(ngModel)]="name"
-              />
+              <input type="text" name="accommodation_name" id="accommodation_name" class="form-control form-control-lg"
+                formControlName="name" [ngClass]="{ error: isError('name') }" />
+              <div class="text-danger feedback" *ngIf="isError('name')">
+                Please enter the accommodation's name
+              </div>
             </div>
 
+            <span class="text-input">Street Address</span>
             <div class="form-group">
-              <label for="address" class="form-label">Address</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                [(ngModel)]="streetName"
-              />
-              <span class="text-input">Street Address</span>
+              <input type="text" name="address" id="address" class="form-control form-control-lg"
+                formControlName="streetName" [ngClass]="{ error: isError('streetName') }" />
+              <div class="text-danger feedback" *ngIf="isError('streetName')">
+                Please enter a valid address
+              </div>
             </div>
 
             <div class="form-row">
               <div class="form-flex">
                 <div class="form-group">
-                  <input type="text" name="city" id="city" [(ngModel)]="city" />
                   <span class="text-input">City</span>
+                  <input type="text" name="city" id="city" class="form-control form-control-lg" formControlName="city"
+                    [ngClass]="{ error: isError('city') }" />
+                  <div class="text-danger feedback" *ngIf="isError('city')">
+                    Please enter a valid city
+                  </div>
                 </div>
                 <div class="form-group">
-                  <input
-                    type="text"
-                    name="postal_code"
-                    id="postal_code"
-                    [(ngModel)]="zipCode"
-                  />
                   <span class="text-input">Postal Code / Zip Code</span>
+                  <input type="text" name="postal_code" id="postal_code" class="form-control form-control-lg"
+                    formControlName="zipCode" [ngClass]="{ error: isError('zipCode') }" />
+                  <div class="text-danger feedback" *ngIf="isError('zipCode')">
+                    Please enter a valid zip code
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="form-label">Pictures</label>
+              <input type="file" class="form-control" (change)="onFileSelected($event)">
+            </div>
+
+            <div class="form-row">
+              <div class="form-flex">
+                <div class="form-group">
+                  <label for="freeParking">Free Parking</label>
+                  <input type="checkbox" name="freeParking" id="freeParking" formControlName="freeParking">
+                </div>
+                <div class="form-group">
+                  <label for="freeParking">Air Conditioning</label>
+                  <input type="checkbox" name="airContitioning" id="airContitioning" formControlName="airConditioning">
+                </div>
+                <div class="form-group">
+                  <label for="freeParking">Barrier Free</label>
+                  <input type="checkbox" name="barrierFree" id="barrierFree" formControlName="barrierFree">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-flex">
+                <div class="form-group">
+                  <label for="freeParking">Breakfast included</label>
+                  <input type="checkbox" name="breakfast" id="breakfast" formControlName="breakfast">
+                </div>
+                <div class="form-group">
+                  <label for="freeParking">Free Wi-fi</label>
+                  <input type="checkbox" name="freeWifi" id="freeWifi" formControlName="freeWifi">
+                </div>
+                <div class="form-group">
+                  <label for="freeParking">24/7 Reception</label>
+                  <input type="checkbox" name="reception" id="reception" formControlName="reception">
                 </div>
               </div>
             </div>
 
             <div class="form-group">
               <label for="price" class="form-label">Price/night</label>
-              <input type="text" name="price" id="price" [(ngModel)]="price" />
+              <input type="text" name="price" id="price" class="form-control form-control-lg" formControlName="price"
+                [ngClass]="{ error: isError('price') }" />
+              <div class="text-danger feedback" *ngIf="isError('price')">
+                Please enter a price
+              </div>
             </div>
 
             <div class="form-group">
               <label for="description" class="form-label">Description</label>
-              <textarea
-                name="description"
-                id="description"
-                rows="6"
-                cols="10"
-                [(ngModel)]="description"
-              ></textarea>
+              <textarea name="description" id="description" class="form-control form-control-lg" rows="6" cols="10"
+                formControlName="description" [ngClass]="{ error: isError('description') }">
+                      </textarea>
+              <div class="text-danger feedback" *ngIf="isError('description')">
+                Please enter a valid description
+              </div>
             </div>
           </div>
         </fieldset>
         <div class="pt-1 mb-4 text-center">
-          <button class="btn color-main btn-lg btn-block" type="submit">
-            Regist new Accommodation
+          <button [disabled]="addAccommodation.invalid" class="btn-lg palatin-btn" type="submit">
+            Update Accommodation's info
           </button>
         </div>
       </div>

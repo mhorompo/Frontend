@@ -9,4 +9,10 @@ export interface Accommodation {
     longitude: number;
     latitude: number;
     price: any;
+    freeParking: boolean;
+    airConditioning: boolean;
+    barrierFree: boolean;
+    breakfastIncluded: boolean;
+    freeWifi: boolean;
+    reception: boolean;
 }

@@ -20,9 +20,9 @@ const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'accommodation', component: AccommodationComponent, canActivate: [AuthGuard] },
-  { path: 'viewAccommodation/:id', component: ViewAccommodationComponent, canActivate: [AuthGuard] },
-  { path: 'listAccommodations', component: ListAccommodationsComponent, canActivate: [AuthGuard]},
-  { path: 'editAccommodation/:id', component: EditAccommodationComponent, canActivate: [AuthGuard]},
+  { path: 'viewAccommodation/:id', component: ViewAccommodationComponent },
+  { path: 'listAccommodations', component: ListAccommodationsComponent, canActivate: [AuthGuard] },
+  { path: 'editAccommodation/:id', component: EditAccommodationComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
 ];
 
@@ -30,4 +30,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

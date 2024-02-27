@@ -8,4 +8,10 @@ export interface AccommodationWithId {
     description: string;
     longitude: number;
     latitude: number;
+    freeParking: number;
+    airConditioning: number;
+    barrierFree: number;
+    breakfastIncluded: number;
+    freeWifi: number;
+    reception: number;
 }

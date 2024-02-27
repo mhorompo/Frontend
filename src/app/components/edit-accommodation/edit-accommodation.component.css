@@ -17,21 +17,10 @@ textarea {
   border: #ebebeb solid 1px;
 }
 
-input {
-  width: 100%;
-  display: block;
-  border: 1px solid #ebebeb;
-  height: 50px;
-  box-sizing: border-box;
-  padding: 0 20px;
-  color: #222;
-  font-weight: bold;
-  font-size: 14px;
-}
-
 .form-flex {
   margin: 0 -10px;
 }
+
 .form-flex .form-group {
   width: 50%;
   padding: 0 10px;
@@ -66,6 +55,11 @@ input.error {
   margin-top: 15px;
 }
 
-button{
+button {
   border-radius: 12px;
+}
+
+input[type="checkbox"] {
+  width: 20%;
+  height: 90%;
 }

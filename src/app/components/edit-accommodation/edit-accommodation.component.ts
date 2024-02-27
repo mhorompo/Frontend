@@ -11,6 +11,7 @@ import { AccommodationService } from 'src/app/service/accommodation.service';
   styleUrls: ['./edit-accommodation.component.css']
 })
 export class EditAccommodationComponent implements OnInit {
+
   accommodationId: any;
   name: any;
   streetName: any;
@@ -20,6 +21,12 @@ export class EditAccommodationComponent implements OnInit {
   longitude: any;
   description: any;
   price: any;
+  freeParking: boolean = false;
+  airConditioning: boolean = false;
+  barrierFree: boolean = false;
+  breakfast: boolean = false;
+  freeWifi: boolean = false;
+  reception: boolean = false;
   editAcc: FormGroup;
 
   constructor(private route: ActivatedRoute, private accommodation: AccommodationService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder) {
@@ -29,7 +36,13 @@ export class EditAccommodationComponent implements OnInit {
       city: ["", Validators.required],
       zipCode: ["", Validators.required],
       description: ["", Validators.required],
-      price: ["", Validators.required]
+      price: ["", Validators.required],
+      freeParking: false,
+      airConditioning: false,
+      barrierFree: false,
+      breakfastIncluded: false,
+      freeWifi: false,
+      reception: false,
     });
   }
 
@@ -55,7 +68,13 @@ export class EditAccommodationComponent implements OnInit {
           city: data.city,
           zipCode: data.zipCode,
           description: data.description,
-          price: data.price
+          price: data.price,
+          freeParking: data.freeParking,
+          airConditioning: data.airConditioning,
+          barrierFree: data.barrierFree,
+          breakfastIncluded: data.breakfastIncluded,
+          freeWifi: data.freeWifi,
+          reception: data.reception
         })
       },
       error => {
@@ -94,15 +113,35 @@ export class EditAccommodationComponent implements OnInit {
         latitude: this.latitude,
         longitude: this.longitude,
         description: this.editAcc.get("description")?.value,
-        price: this.editAcc.get("price")?.value
+        price: this.editAcc.get("price")?.value,
+        freeParking: this.editAcc.get("freeParking")?.value,
+        airConditioning: this.editAcc.get("airConditioning")?.value,
+        barrierFree: this.editAcc.get("barrierFree")?.value,
+        breakfastIncluded: this.editAcc.get("breakfastIncluded")?.value,
+        freeWifi: this.editAcc.get("freeWifi")?.value,
+        reception: this.editAcc.get("reception")?.value
       }
       this.accommodation.updateAccomodation(data, this.accommodationId).subscribe((response: Accommodation) => {
+        if (this.selectedFile) {
+          const formData = new FormData();
+          formData.append('image', this.selectedFile, this.selectedFile.name);
+          this.accommodation.updateImage(formData, this.accommodationId).subscribe(uploadLog => {
+            console.log(uploadLog);
+          });
+        }
         window.location.reload();
-      });;
+      });
+
     });
   }
 
   isError(field: string): boolean {
     return this.editAcc.get(field)?.errors != null;
+  }
+
+  selectedFile: File | null = null;
+
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
   }
 }

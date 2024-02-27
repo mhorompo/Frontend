@@ -56,12 +56,12 @@ export class AccommodationService {
     return this.http.post(`${this.baseUrl}/image/uploadImage/${id}`, formData);
   }
 
-  getImages(id: number) {
-    return this.http.get(`${this.baseUrl}/image/getImagesById/${id}`);
+  updateImage(formData: FormData, id: number) {
+    return this.http.put(`${this.baseUrl}/image/updateImage/${id}`, formData);
   }
 
-  getImagesById(id: number) {
-    return this.http.get(`${this.baseUrl}/image/getImagesById/${id}`);
+  getImage(id: number): Observable<Blob> {
+    return this.http.get<Blob>(`${this.baseUrl}/image/getImage/${id}`, { observe: 'body', responseType: 'blob' as 'json' });
   }
 
   newReservation(userId: number, accommodationId: number, data: DateData) {
