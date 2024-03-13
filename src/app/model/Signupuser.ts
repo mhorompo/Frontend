@@ -3,5 +3,5 @@ export interface SignupUser {
     firstName: string;
     lastName: string;
     password: string;
-    roleEnum: string;
+    roleEnum?: string;
 }

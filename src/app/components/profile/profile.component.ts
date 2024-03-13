@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SignupUser } from 'src/app/model/Signupuser';
 import { User } from 'src/app/model/User';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-regist',
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent {
+
   roleEnum: string = '';
   id?: number;
 
@@ -45,17 +47,35 @@ export class ProfileComponent {
       password: this.profileForm.get('password')?.value,
       firstName: this.profileForm.get('firstName')?.value,
       lastName: this.profileForm.get('lastName')?.value,
-      roleEnum: this.roleEnum,
+      roleEnum: this.roleEnum
     };
 
     this.auth.update(data, this.id as number).subscribe((response: User) => {
       localStorage.setItem('login', JSON.stringify(response));
-      window.location.reload();
       console.log(response);
+      Swal.fire({
+        icon: "success",
+        title: "Profile Updated!",
+        showConfirmButton: false,
+        timer: 1000
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1100);
     });
   }
 
   isError(field: string): boolean {
     return this.profileForm.get(field)?.errors != null;
+  }
+
+  toggleFieldTextType() {
+    const passwordInput = $('#password') as JQuery<HTMLInputElement>;
+
+    if (passwordInput.attr('type') === 'password') {
+      passwordInput.attr('type', 'text');
+    } else {
+      passwordInput.attr('type', 'password');
+    }
   }
 }

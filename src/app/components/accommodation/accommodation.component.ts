@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MapsAPILoader } from '@ng-maps/core';
 import { Accommodation } from 'src/app/model/Accommodation';
+import Swal from 'sweetalert2';
 import { AccommodationService } from '../../service/accommodation.service';
 
 @Component({
@@ -23,7 +24,7 @@ export class AccommodationComponent {
   freeParking: boolean = false;
   airConditioning: boolean = false;
   barrierFree: boolean = false;
-  breakfast: boolean = false;
+  breakfastIncluded: boolean = false;
   freeWifi: boolean = false;
   reception: boolean = false;
   address: string | null | undefined;
@@ -37,6 +38,7 @@ export class AccommodationComponent {
       zipCode: ["", Validators.required],
       description: ["", Validators.required],
       price: ["", Validators.required],
+      picture: ["", Validators.required],
       freeParking: false,
       airConditioning: false,
       barrierFree: false,
@@ -99,9 +101,22 @@ export class AccommodationComponent {
           this.accommodation.uploadImage(formData, response.id).subscribe(uploadLog => {
             console.log(uploadLog);
           });
-          this.router.navigateByUrl('/');
+          Swal.fire({
+            icon: "success",
+            title: "Accommodation Saved",
+            showConfirmButton: false,
+            timer: 1000
+          });
+          setTimeout(() => {
+            this.router.navigateByUrl('/');
+          }, 1100);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+          });
         }
-        console.log(response);
       });
     });
   }

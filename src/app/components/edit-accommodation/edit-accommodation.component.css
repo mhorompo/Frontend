@@ -57,6 +57,13 @@ input.error {
 
 button {
   border-radius: 12px;
+  cursor: pointer;
+}
+
+.disabled {
+  background-color: gray;
+  color: black;
+  cursor: default;
 }
 
 input[type="checkbox"] {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MapsAPILoader } from '@ng-maps/core';
 import { Accommodation } from 'src/app/model/Accommodation';
 import { AccommodationService } from 'src/app/service/accommodation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-accommodation',
@@ -29,7 +30,7 @@ export class EditAccommodationComponent implements OnInit {
   reception: boolean = false;
   editAcc: FormGroup;
 
-  constructor(private route: ActivatedRoute, private accommodation: AccommodationService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private accommodation: AccommodationService, private mapsAPILoader: MapsAPILoader, private fb: FormBuilder, private router: Router) {
     this.editAcc = this.fb.group({
       name: ["", Validators.required],
       streetName: ["", Validators.required],
@@ -129,14 +130,23 @@ export class EditAccommodationComponent implements OnInit {
             console.log(uploadLog);
           });
         }
-        window.location.reload();
+        Swal.fire({
+          icon: "success",
+          title: "Accommodation Updated!",
+          showConfirmButton: false,
+          timer: 1000
+        });
+        setTimeout(() => {
+          this.router.navigateByUrl('/listAccommodations');
+        }, 1000);
       });
 
     });
   }
 
   isError(field: string): boolean {
-    return this.editAcc.get(field)?.errors != null;
+    const formControl = this.editAcc.get(field);
+    return !!formControl?.errors && formControl.dirty;
   }
 
   selectedFile: File | null = null;

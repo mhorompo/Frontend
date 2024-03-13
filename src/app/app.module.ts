@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgMapsCoreModule } from '@ng-maps/core';
 import { GOOGLE_MAPS_API_CONFIG, NgMapsGoogleModule } from '@ng-maps/google';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import * as jQuery from 'jquery';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { AppRoutingModule } from './app-routing.module';
@@ -56,7 +57,8 @@ declare function load($: typeof jQuery): void;
     NgMapsCoreModule,
     NgMapsGoogleModule,
     NgxDaterangepickerMd.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     {

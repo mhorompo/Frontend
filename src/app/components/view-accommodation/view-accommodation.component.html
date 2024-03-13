@@ -11,10 +11,13 @@
                                 <h2 *ngIf="accommodation" class="fw-normal text-black" style="letter-spacing: 1px">
                                     {{accommodation.name}}
                                 </h2>
+                                <h4 class="fw-bold text-black" style="float: right;">{{accommodation.price}} HUF/Night
+                                </h4>
 
                                 <p *ngIf="accommodation" class="fw-normal text-black" style="letter-spacing: 1px"><i
                                         class="fa-solid fa-location-dot"></i>
                                     {{accommodation.streetName}}, {{accommodation.zipCode}}</p>
+
                                 <hr>
 
                                 <div class="container">
