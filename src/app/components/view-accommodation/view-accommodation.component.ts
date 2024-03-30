@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationWithId } from 'src/app/model/AccommodationWithId';
 import { DateData } from 'src/app/model/DateData';
 import { AccommodationService } from 'src/app/service/accommodation.service';
@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./view-accommodation.component.css']
 })
 export class ViewAccommodationComponent {
+
   id: number = 0;
   accommodation!: AccommodationWithId;
   selected?: any;
@@ -20,10 +21,12 @@ export class ViewAccommodationComponent {
   constructor(
     private route: ActivatedRoute,
     private accommodationService: AccommodationService,
-    private auth: AuthService
+    public auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    console.log(this.auth.isLoggedIn());
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
       this.id = +idParam;
@@ -40,32 +43,19 @@ export class ViewAccommodationComponent {
     });
   }
 
-  formatDate(data: any) {
-    // Év, hónap és nap kinyerése a Date objektumból
-    let year = data.getFullYear();
-    let month = String(data.getMonth() + 1).padStart(2, '0'); // A hónapok 0-tól kezdődnek, ezért +1, majd két számjegyű formátumra alakítjuk
-    let day = String(data.getDate()).padStart(2, '0'); // Nap két számjegyű formátumra alakítása
+  // newReservation() {
+  //   if (this.selected.start && this.selected.end) {
+  //     const login = localStorage.getItem('login');
 
-    // A kívánt formátumú dátum összeállítása
-    let result = `${year}-${month}-${day}`;
+  //     this.userId = this.auth.getLoggedInUserId() ?? -1;
 
-    return result;
-  }
+  //     this.accommodationService.newReservation(this.userId, this.accommodation.id, data).subscribe(response => {
+  //       console.log(response);
+  //     })
+  //   }
+  // }
 
-  newReservation() {
-    if (this.selected.start && this.selected.end) {
-      const login = localStorage.getItem('login');
-
-      this.userId = this.auth.getLoggedInUserId() ?? -1;
-
-      const data: DateData = {
-        startDate: this.formatDate(this.selected.start.$d),
-        endDate: this.formatDate(this.selected.end.$d)
-      }
-
-      this.accommodationService.newReservation(this.userId, this.accommodation.id, data).subscribe(response => {
-        console.log(response);
-      })
-    }
+  book() {
+    this.router.navigate(["/bookNow/" + this.accommodation.id]);
   }
 }

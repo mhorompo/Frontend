@@ -1,4 +1,4 @@
-(function load ($) {
+(function load($) {
 
     var browserWindow = $(window);
 
@@ -11,10 +11,9 @@
 
     // :: 2.0 Nav Active Code
     if ($.classyNav) {
-      console.log("gelp");
+        console.log("gelp");
         $('#palatinNav').classyNav();
     } else {
-      console.log("nem");
     }
 
     // :: 3.0 Nice-select Active Code

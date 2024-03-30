@@ -49,7 +49,6 @@ export class ListAccommodationsComponent implements OnInit {
 
   ngOnInit(): void {
     this.accommodationService.getAllAccommodationByUserId().subscribe(a => {
-      console.log(a);
       this.accommodations = a;
     })
   }

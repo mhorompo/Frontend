@@ -52,22 +52,23 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label text-black" for="password">Password</label>
+            <label class="form-label text-black" for="oldPass">Old Password</label>
             <div class="input-container">
-              <input type="password" id="password" class="form-control form-control-lg" formControlName="password"
-                [ngClass]="{ error: isError('password') }" />
+              <input type="password" id="oldPass" class="form-control form-control-lg" formControlName="oldPass" [ngClass]="{ error: isError('oldPass') }" />
               <i class="icon bi bi-eye-slash" id="togglePassword" (click)="toggleFieldTextType()"></i>
             </div>
-            <div class="text-danger feedback" *ngIf="
-                profileForm.get('password')?.hasError('required') &&
-                profileForm.get('password')?.touched
-              ">
-              Please choose a Password
+
+            <div class="text-danger feedback" *ngIf="profileForm.get('oldPass')?.hasError('minlength') && profileForm.get('oldPass')?.touched">
+              Password must be at least 6 characters long
             </div>
-            <div class="text-danger feedback" *ngIf="
-                profileForm.get('password')?.hasError('minlength') &&
-                profileForm.get('password')?.touched
-              ">
+
+            <label class="form-label text-black" for="newPass">New Password</label>
+            <div class="input-container">
+              <input type="password" id="newPass" class="form-control form-control-lg" formControlName="newPass" />
+              <i class="icon bi bi-eye-slash" id="togglePassword" (click)="toggleFieldTextType()"></i>
+            </div>
+
+            <div class="text-danger feedback" *ngIf="profileForm.get('newPass')?.hasError('minlength') && profileForm.get('newPass')?.touched">
               Password must be at least 6 characters long
             </div>
           </div>

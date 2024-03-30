@@ -25,6 +25,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegistComponent } from './components/regist/regist.component';
 import { RoomsAreaComponent } from './components/rooms-area/rooms-area.component';
 import { ViewAccommodationComponent } from './components/view-accommodation/view-accommodation.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 declare function load($: typeof jQuery): void;
 
@@ -58,7 +60,9 @@ declare function load($: typeof jQuery): void;
     NgMapsGoogleModule,
     NgxDaterangepickerMd.forRoot(),
     ReactiveFormsModule,
-    SweetAlert2Module.forRoot()
+    MatStepperModule,
+    BrowserAnimationsModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     {

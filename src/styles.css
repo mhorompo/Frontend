@@ -39,6 +39,7 @@
 @import url(assets/css/font-awesome.min.css);
 @import url(assets/css/nice-select.css);
 @import url(assets/css/travel-icon.css);
+@import 'material-icons/iconfont/material-icons.css';
 
 @font-face {
   font-family: "FuturaLT-Book";

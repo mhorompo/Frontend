@@ -11,7 +11,8 @@
                                 <h2 *ngIf="accommodation" class="fw-normal text-black" style="letter-spacing: 1px">
                                     {{accommodation.name}}
                                 </h2>
-                                <h4 class="fw-bold text-black" style="float: right;">{{accommodation.price}} HUF/Night
+                                <h4 *ngIf="accommodation" class="fw-bold text-black" style="float: right;">
+                                    {{accommodation.price}} HUF/Night
                                 </h4>
 
                                 <p *ngIf="accommodation" class="fw-normal text-black" style="letter-spacing: 1px"><i
@@ -26,19 +27,19 @@
                                             <img class="pic" [src]="imageUrl" alt="Missing picture">
                                         </div>
                                         <div class="col-4">
-                                            <h4 class="features" *ngIf="accommodation.freeParking"><i
+                                            <h4 class="features" *ngIf="accommodation?.freeParking"><i
                                                     class="fa-solid fa-square-parking"></i>Free Parking</h4>
-                                            <h4 class="features" *ngIf="accommodation.airConditioning"><i
+                                            <h4 class="features" *ngIf="accommodation?.airConditioning"><i
                                                     class="fa-solid fa-wind"></i>Air Conditioning
                                             </h4>
-                                            <h4 class="features" *ngIf="accommodation.barrierFree"><i
+                                            <h4 class="features" *ngIf="accommodation?.barrierFree"><i
                                                     class="fa-solid fa-wheelchair"></i>Barrier Free</h4>
-                                            <h4 class="features" *ngIf="accommodation.breakfastIncluded"><i
+                                            <h4 class="features" *ngIf="accommodation?.breakfastIncluded"><i
                                                     class="fa-solid fa-mug-saucer"></i>Breakfast
                                                 included</h4>
-                                            <h4 class="features" *ngIf="accommodation.freeWifi"><i
+                                            <h4 class="features" *ngIf="accommodation?.freeWifi"><i
                                                     class="fa-solid fa-wifi"></i>Free Wi-fi</h4>
-                                            <h4 class="features" *ngIf="accommodation.reception"><i
+                                            <h4 class="features" *ngIf="accommodation?.reception"><i
                                                     class="fa-solid fa-phone"></i>24/7 Reception</h4>
                                         </div>
                                     </div>
@@ -51,16 +52,16 @@
                                     {{accommodation.description}}
                                 </p>
 
-                                <form (ngSubmit)="newReservation()">
-                                    <input type="text" matInput ngxDaterangepickerMd
-                                        [locale]="{applyLabel: 'ok', firstDay: 1,  format: 'YYYY-MM-DD'}"
-                                        startKey="start" endKey="end" [(ngModel)]="selected" name="daterange"
-                                        [autoApply]="true" class="form-control-lg form-control" />
-
-                                    <div class="pt-1 mb-4 text-center">
-                                        <button class="btn palatin-btn" type="submit">Reserve</button>
-                                    </div>
-                                </form>
+                                <!-- DatePicker
+                                <input type="text" matInput ngxDaterangepickerMd
+                                    [locale]="{applyLabel: 'ok', firstDay: 1,  format: 'YYYY-MM-DD'}"
+                                    startKey="start" endKey="end" [(ngModel)]="selected" name="daterange"
+                                    [autoApply]="true" class="form-control-lg form-control" />
+                                -->
+                                <div class="pt-1 mb-4 text-center">
+                                    <button *ngIf="this.auth.isLoggedIn()" class="btn palatin-btn" (click)="book()">Reserve</button>
+                                    <p *ngIf="!this.auth.isLoggedIn()">To reserve this location, please login or register!</p>
+                                </div>
                             </div>
                         </div>
                     </div>
