@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { AccommodationComponent } from './components/accommodation/accommodation.component';
+import { BookNowComponent } from './components/book-now/book-now.component';
 import { ContentComponent } from './components/content/content.component';
 import { EditAccommodationComponent } from './components/edit-accommodation/edit-accommodation.component';
 import { ListAccommodationsComponent } from './components/list-accommodations/list-accommodations.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'viewAccommodation/:id', component: ViewAccommodationComponent },
   { path: 'listAccommodations', component: ListAccommodationsComponent, canActivate: [AuthGuard] },
   { path: 'editAccommodation/:id', component: EditAccommodationComponent, canActivate: [AuthGuard] },
+  { path: 'bookNow/:id', component: BookNowComponent },
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
 ];
 

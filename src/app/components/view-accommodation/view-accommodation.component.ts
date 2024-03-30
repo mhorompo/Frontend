@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationWithId } from 'src/app/model/AccommodationWithId';
 import { DateData } from 'src/app/model/DateData';
 import { AccommodationService } from 'src/app/service/accommodation.service';
@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./view-accommodation.component.css']
 })
 export class ViewAccommodationComponent {
+
   id: number = 0;
   accommodation!: AccommodationWithId;
   selected?: any;
@@ -20,7 +21,8 @@ export class ViewAccommodationComponent {
   constructor(
     private route: ActivatedRoute,
     private accommodationService: AccommodationService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -67,5 +69,9 @@ export class ViewAccommodationComponent {
         console.log(response);
       })
     }
+  }
+
+  book() {
+    this.router.navigate(["/bookNow/" + this.accommodation.id]);
   }
 }

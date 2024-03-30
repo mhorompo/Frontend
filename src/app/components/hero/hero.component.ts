@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { AccommodationWithId } from 'src/app/model/AccommodationWithId';
 import { AccommodationService } from 'src/app/service/accommodation.service';
 
-
 @Component({
   selector: 'app-hero',
   templateUrl: './hero.component.html',
