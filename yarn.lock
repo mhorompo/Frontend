@@ -168,6 +168,7 @@
     yargs "17.7.2"
 
 "@angular/common@*", "@angular/common@^14.0.0  || ^15.0.0 || ^16.0.0", "@angular/common@^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/common@^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "@angular/common@^17.0.0", "@angular/common@^17.0.0 || ^18.0.0", "@angular/common@^17.2.2", "@angular/common@^9.1.0 || ^10.0.0", "@angular/common@17.2.2":
+"@angular/common@^14.0.0  || ^15.0.0 || ^16.0.0", "@angular/common@^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/common@^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "@angular/common@^17.0.0", "@angular/common@^17.2.2", "@angular/common@^2.0.0", "@angular/common@^9.1.0 || ^10.0.0", "@angular/common@17.2.2":
   version "17.2.2"
   resolved "https://registry.npmjs.org/@angular/common/-/common-17.2.2.tgz"
   integrity sha512-F2wQj/lYcZUNZuNmuuDb8RK8tU7e1w7IzN8J6nT2gQHq6NiZfYiUL2XrToGtdd/cZjBeYKGiWRBW/PsZzKyC3A==
@@ -188,21 +189,21 @@
     tslib "^2.3.0"
     yargs "^17.2.1"
 
-"@angular/compiler@^17.2.2", "@angular/compiler@17.2.2":
+"@angular/compiler@^17.2.2", "@angular/compiler@^2.0.0", "@angular/compiler@17.2.2":
   version "17.2.2"
   resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-17.2.2.tgz"
   integrity sha512-loRr4+9/JkSDszExZiS+iuhjXj7wvLF4gJeqlbp2PbPl4eUoGKYq0RVZ3a7IkIXxB5sgoYB5MjKsbdm/uaMK1A==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@*", "@angular/core@^14.0.0  || ^15.0.0 || ^16.0.0", "@angular/core@^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/core@^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "@angular/core@^17.0.0", "@angular/core@^17.0.0 || ^18.0.0", "@angular/core@^17.2.2", "@angular/core@^9.1.0 || ^10.0.0", "@angular/core@17.2.2":
+"@angular/core@^14.0.0  || ^15.0.0 || ^16.0.0", "@angular/core@^14.0.0 || ^15.0.0 || ^16.0.0", "@angular/core@^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0", "@angular/core@^17.0.0", "@angular/core@^17.2.2", "@angular/core@^2.0.0", "@angular/core@^9.1.0 || ^10.0.0", "@angular/core@17.2.2":
   version "17.2.2"
   resolved "https://registry.npmjs.org/@angular/core/-/core-17.2.2.tgz"
   integrity sha512-jXnrOVsA9b34PJN383EOss3ejd5+xUTeijuUy5njPRXpxMxrGjV5gkk0lSxsALRxw2ICax2tMoGmHXfXO1x9gw==
   dependencies:
     tslib "^2.3.0"
 
-"@angular/forms@^17.0.0", "@angular/forms@^17.0.0 || ^18.0.0", "@angular/forms@^17.2.2":
+"@angular/forms@^17.0.0", "@angular/forms@^17.2.2", "@angular/forms@^2.0.0":
   version "17.2.2"
   resolved "https://registry.npmjs.org/@angular/forms/-/forms-17.2.2.tgz"
   integrity sha512-xxy1Khpun2TpSDQch6BK4uHkqIxZvxsBU2LZgo/3W604lKoVjBGKPZqoYFRew2OPeCQ3VjK9P8a8ZhitsLLlKQ==
@@ -5623,10 +5624,10 @@ mkdirp@^1.0.3:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-moment@^2.18.1, moment@^2.30.1:
-  version "2.30.1"
-  resolved "https://registry.npmjs.org/moment/-/moment-2.30.1.tgz"
-  integrity sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==
+moment@2.15.1:
+  version "2.15.1"
+  resolved "https://registry.npmjs.org/moment/-/moment-2.15.1.tgz"
+  integrity sha512-VRuqlq9ET3eUjWkqgZtUegkYF664TRWaxmgwlHxboe653wv4stNaVKDufNfCDcGFu1EA2Bm26bD0NWLaFMHfvA==
 
 mrmime@2.0.0:
   version "2.0.0"
@@ -5685,10 +5686,12 @@ neo-async@^2.6.2:
   resolved "https://registry.npmjs.org/neo-async/-/neo-async-2.6.2.tgz"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-ng-bootstrap@^0.46.0:
-  version "0.46.0"
-  resolved "https://registry.npmjs.org/ng-bootstrap/-/ng-bootstrap-0.46.0.tgz"
-  integrity sha512-7EiegJc9xrrFZBG0/szuwcJW+WfTL/odQ0Z4h6m1po7RCtrx0FyOzT4AnIxvTI1vwbs7LHyKYoadR2/aN1Wr+Q==
+ng-bootstrap@^1.1.16:
+  version "1.1.16"
+  resolved "https://registry.npmjs.org/ng-bootstrap/-/ng-bootstrap-1.1.16.tgz"
+  integrity sha512-/a47ScZXkniBqzed1nofK8VtQY6U1y7abQO3x6qCVrmfQ1sQftQPBLC55hDZMNHEWasVNGVWGO8UCq4KX0Wu3A==
+  dependencies:
+    moment "2.15.1"
 
 ngx-daterangepicker-material@^6.0.4:
   version "6.0.4"
@@ -7101,9 +7104,9 @@ supports-preserve-symlinks-flag@^1.0.0:
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
 sweetalert2@^11.0.0, sweetalert2@^11.6.13:
-  version "11.10.7"
-  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.10.7.tgz"
-  integrity sha512-5Jlzrmaitay6KzU+2+LhYu9q+L4v/dZ8oZyEDH14ep0C/QilCnFLHmqAyD/Lhq/lm5DiwsOs6Tr58iv8k3wyGg==
+  version "11.6.13"
+  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.6.13.tgz"
+  integrity sha512-n5yVF0FNx1lm4XzpPyb1HIaiptzODfVyeCzmB809tpK+1bPdoKoevKOxYjrtId75DV7xuIp4r6cjn8xUAB8dPQ==
 
 symbol-observable@4.0.0:
   version "4.0.0"

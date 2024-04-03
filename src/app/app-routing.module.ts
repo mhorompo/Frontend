@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'listAccommodations', component: ListAccommodationsComponent, canActivate: [AuthGuard] },
   { path: 'editAccommodation/:id', component: EditAccommodationComponent, canActivate: [AuthGuard] },
   { path: 'bookNow/:id', component: BookNowComponent },
-  { path: 'completed', component: CompletedPayComponent, canActivate: [AuthGuard]},
   { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
 ];
 

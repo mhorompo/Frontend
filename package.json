@@ -28,8 +28,11 @@
     "@fortawesome/fontawesome-svg-core": "^6.5.1",
     "@fortawesome/free-solid-svg-icons": "^6.5.1",
     "@googlemaps/js-api-loader": "^1.16.6",
+<<<<<<< HEAD
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
+=======
+>>>>>>> 5aa6a3bfdfc5b2120b45332152f5f4e28a3d39ba
     "@ng-bootstrap/ng-bootstrap": "^16.0.0",
     "@ng-maps/core": "^5.0.3",
     "@ng-maps/google": "^5.0.4",
@@ -38,9 +41,13 @@
     "angular-ng-stepper": "^2.0.0",
     "bcrypt": "^5.1.1",
     "jquery": "^3.7.1",
+<<<<<<< HEAD
     "material-icons": "^1.13.12",
     "moment": "^2.30.1",
     "ng-bootstrap": "^0.46.0",
+=======
+    "ng-bootstrap": "^1.1.16",
+>>>>>>> 5aa6a3bfdfc5b2120b45332152f5f4e28a3d39ba
     "ngx-daterangepicker-material": "^6.0.4",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.6.13",
