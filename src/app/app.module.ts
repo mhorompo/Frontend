@@ -1,7 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatStepperModule } from '@angular/material/stepper';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMapsCoreModule } from '@ng-maps/core';
 import { GOOGLE_MAPS_API_CONFIG, NgMapsGoogleModule } from '@ng-maps/google';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
@@ -25,8 +27,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegistComponent } from './components/regist/regist.component';
 import { RoomsAreaComponent } from './components/rooms-area/rooms-area.component';
 import { ViewAccommodationComponent } from './components/view-accommodation/view-accommodation.component';
-import { MatStepperModule } from '@angular/material/stepper';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 declare function load($: typeof jQuery): void;
 

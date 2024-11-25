@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AccommodationWithId } from 'src/app/model/AccommodationWithId';
-import { DateData } from 'src/app/model/DateData';
 import { AccommodationService } from 'src/app/service/accommodation.service';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -11,12 +10,12 @@ import { AuthService } from 'src/app/service/auth.service';
   styleUrls: ['./view-accommodation.component.css']
 })
 export class ViewAccommodationComponent {
-
   id: number = 0;
   accommodation!: AccommodationWithId;
   selected?: any;
   userId?: number;
   imageUrl: any;
+  isLoggedIn?: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +25,7 @@ export class ViewAccommodationComponent {
   ) { }
 
   ngOnInit() {
-    console.log(this.auth.isLoggedIn());
+    this.isLoggedIn = this.auth.isLoggedIn();
     const idParam = this.route.snapshot.paramMap.get('id');
     if (idParam) {
       this.id = +idParam;

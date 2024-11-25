@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/model/LoginUser';
 import { User } from 'src/app/model/User';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,13 +29,23 @@ export class LoginComponent {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };
-    this.auth.login(data).subscribe((response: User) => {
-      if (response) {
-        localStorage.setItem('login', JSON.stringify(response));
-        this.router.navigateByUrl('/');
+    this.auth.login(data).subscribe(
+      (response: User) => {
+        if (response) {
+          localStorage.setItem('login', JSON.stringify(response));
+          this.router.navigateByUrl('/');
+        }
+        console.log(response);
+      },
+      (error) => {
+        console.error('Hiba történt a bejelentkezés során:', error);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Wrong Email or Password!",
+        });
       }
-      console.log(response);
-    });
+    );
   }
 
   toggleFieldTextType() {

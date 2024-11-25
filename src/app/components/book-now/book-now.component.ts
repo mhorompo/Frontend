@@ -1,14 +1,14 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatStepper } from '@angular/material/stepper';
-import { User } from 'src/app/model/User';
+import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { AccommodationWithId } from 'src/app/model/AccommodationWithId';
-import { ActivatedRoute, Router } from '@angular/router';
-import { AccommodationService } from 'src/app/service/accommodation.service';
-import Swal from 'sweetalert2';
-import { ReservationService } from 'src/app/service/reservation.service';
 import { Reservation } from 'src/app/model/Reservation';
+import { User } from 'src/app/model/User';
+import { AccommodationService } from 'src/app/service/accommodation.service';
+import { ReservationService } from 'src/app/service/reservation.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-book-now',
@@ -20,7 +20,7 @@ export class BookNowComponent {
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   profileForm: FormGroup;
-  billingGroup: FormGroup<any>;
+  billingGroup: FormGroup;
   accommodation!: AccommodationWithId;
   sameChecked: boolean = false;
   selectedDays?: number;
@@ -197,5 +197,10 @@ export class BookNowComponent {
       this.billingGroup.get('selected')?.value.start,
       'days'
     );
+  }
+
+  //Datum formazasa
+  formatDate(date: any) {
+    return date.format('YYYY. MM. DD');
   }
 }

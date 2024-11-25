@@ -8,8 +8,8 @@ import { AccommodationService } from 'src/app/service/accommodation.service';
   templateUrl: './hero.component.html',
   styleUrls: ['./hero.component.css']
 })
-export class HeroComponent implements OnInit {
 
+export class HeroComponent implements OnInit {
   accommodations: AccommodationWithId[] = [];
 
   constructor(private accommodationService: AccommodationService, private router: Router) { }
@@ -22,5 +22,9 @@ export class HeroComponent implements OnInit {
 
   click(id: number) {
     this.router.navigate(['/viewAccommodation/' + id]);
+  }
+
+  tootlip(id: any) {
+
   }
 }

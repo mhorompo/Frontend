@@ -1,15 +1,15 @@
-mat-horizontal-stepper{
+mat-horizontal-stepper {
     font-size: large;
     margin-top: 90px;
 }
 
-button{
+button {
     margin-top: 32px;
     margin: 2px;
     border-radius: 12px;
 }
 
-input{
+input {
     margin-bottom: 14px;
 }
 
@@ -22,40 +22,57 @@ input[type="checkbox"] {
     background-color: gray;
     color: black;
     cursor: default;
-  }
+}
 
-.card{
+.card {
     width: 60%;
     margin: auto;
     border-radius: 1rem;
     margin-top: 30px;
 }
 
-::ng-deep .mat-horizontal-stepper-header-container{
+::ng-deep .mat-horizontal-stepper-header-container {
     background-color: #cb8670;
     padding: 1rem;
     color: white;
 }
 
-::ng-deep .mat-step-header[aria-selected="true"]  {
-    
+::ng-deep .mat-step-header[aria-selected="true"] {
+
     border-radius: 24px;
     font-weight: 10px;
     padding: 1rem;
 }
 
-::ng-deep .mat-step-icon-selected{
+::ng-deep .mat-step-icon-selected {
     background-color: #363636 !important;
     padding: 1rem;
 }
 
-::ng-deep .mat-step-label-selected{
+::ng-deep .mat-step-label-selected {
     padding: 1rem;
     font-weight: bold !important;
 }
 
-::ng-deep .cdk-visually-hidden{
+::ng-deep .cdk-visually-hidden {
     display: none;
+}
+
+.paypal {
+    width: 50%;
+    margin: auto;
+}
+
+.paypal-logo {
+    width: 25%;
+    margin: auto;
+}
+
+.background {
+    box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+    -webkit-box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+    -moz-box-shadow: 10px 10px 31px -5px rgba(0, 0, 0, 0.46);
+    margin-bottom: 50px;
 }
 
 /* ::ng-deep .mat-horizontal-stepper-header{

@@ -8,32 +8,19 @@
           <h4 class="desc text-center">Enter your details</h4>
           <div class="fieldset-content">
             <div class="form-group">
-              <label class="form-label text-black" for="email"
-                >Email address</label
-              >
-              <input
-                type="email"
-                [ngClass]="{ error: isError('email', profileForm) }"
-                id="email"
-                class="form-control form-control-lg"
-                formControlName="email"
-              />
-              <div
-                *ngIf="
+              <label class="form-label text-black" for="email">Email address</label>
+              <input type="email" [ngClass]="{ error: isError('email', profileForm) }" id="email"
+                class="form-control form-control-lg" formControlName="email" />
+              <div *ngIf="
                   profileForm.get('email')?.hasError('required') &&
                   profileForm.get('email')?.dirty
-                "
-                class="text-danger feedback"
-              >
+                " class="text-danger feedback">
                 Email is required
               </div>
-              <div
-                *ngIf="
+              <div *ngIf="
                   profileForm.get('email')?.hasError('email') &&
                   profileForm.get('email')?.dirty
-                "
-                class="text-danger feedback"
-              >
+                " class="text-danger feedback">
                 Invalid email format
               </div>
             </div>
@@ -41,45 +28,25 @@
             <div class="form-row">
               <div class="form-flex">
                 <div class="form-group">
-                  <label class="form-label text-black" for="firstName"
-                    >First Name</label
-                  >
-                  <input
-                    type="text"
-                    id="firstName"
-                    class="form-control form-control-lg"
-                    formControlName="firstName"
-                    [ngClass]="{ error: isError('firstName', profileForm) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <label class="form-label text-black" for="firstName">First Name</label>
+                  <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+                    [ngClass]="{ error: isError('firstName', profileForm) }" />
+                  <div class="text-danger feedback" *ngIf="
                       profileForm.get('firstName')?.hasError('required') &&
                       profileForm.get('firstName')?.dirty
-                    "
-                  >
+                    ">
                     Please enter your first name
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label text-black" for="lastName"
-                    >Last Name</label
-                  >
-                  <input
-                    type="text"
-                    id="lastName"
-                    class="form-control form-control-lg"
-                    formControlName="lastName"
-                    [ngClass]="{ error: isError('lastName', profileForm) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <label class="form-label text-black" for="lastName">Last Name</label>
+                  <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName"
+                    [ngClass]="{ error: isError('lastName', profileForm) }" />
+                  <div class="text-danger feedback" *ngIf="
                       profileForm.get('lastName')?.hasError('required') &&
                       profileForm.get('lastName')?.dirty
-                    "
-                  >
+                    ">
                     Please enter your last name
                   </div>
                 </div>
@@ -88,21 +55,12 @@
 
             <span class="text-input">Street Address</span>
             <div class="form-group">
-              <input
-                type="text"
-                name="address"
-                id="address"
-                class="form-control form-control-lg"
-                formControlName="streetName"
-                [ngClass]="{ error: isError('streetName', profileForm) }"
-              />
-              <div
-                class="text-danger feedback"
-                *ngIf="
+              <input type="text" name="address" id="address" class="form-control form-control-lg"
+                formControlName="streetName" [ngClass]="{ error: isError('streetName', profileForm) }" />
+              <div class="text-danger feedback" *ngIf="
                   isError('streetName', profileForm) &&
                   profileForm.get('streetName')?.dirty
-                "
-              >
+                ">
                 Please enter a valid address
               </div>
             </div>
@@ -111,41 +69,23 @@
               <div class="form-flex">
                 <div class="form-group">
                   <span class="text-input">City</span>
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    class="form-control form-control-lg"
-                    formControlName="city"
-                    [ngClass]="{ error: isError('city', profileForm) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <input type="text" name="city" id="city" class="form-control form-control-lg" formControlName="city"
+                    [ngClass]="{ error: isError('city', profileForm) }" />
+                  <div class="text-danger feedback" *ngIf="
                       isError('city', profileForm) &&
                       profileForm.get('city')?.dirty
-                    "
-                  >
+                    ">
                     Please enter a valid city
                   </div>
                 </div>
                 <div class="form-group">
                   <span class="text-input">Postal Code / Zip Code</span>
-                  <input
-                    type="text"
-                    name="postal_code"
-                    id="postal_code"
-                    class="form-control form-control-lg"
-                    formControlName="zipCode"
-                    [ngClass]="{ error: isError('zipCode', profileForm) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <input type="text" name="postal_code" id="postal_code" class="form-control form-control-lg"
+                    formControlName="zipCode" [ngClass]="{ error: isError('zipCode', profileForm) }" />
+                  <div class="text-danger feedback" *ngIf="
                       isError('zipCode', profileForm) &&
                       profileForm.get('zipCode')?.dirty
-                    "
-                  >
+                    ">
                     Please enter a valid zip code
                   </div>
                 </div>
@@ -153,13 +93,9 @@
             </div>
           </div>
         </fieldset>
-        <div class="pt-1 mb-4 text-center">
-          <button
-            class="palatin-btn"
-            matStepperNext
-            [disabled]="profileForm.invalid"
-            [ngClass]="{ disabled: profileForm.invalid }"
-          >
+        <div class="pt-1 mt-4 text-center">
+          <button class="palatin-btn" matStepperNext [disabled]="profileForm.invalid"
+            [ngClass]="{ disabled: profileForm.invalid }">
             Next
           </button>
         </div>
@@ -176,76 +112,40 @@
 
           <div class="form-group">
             <label for="date">Choose reservation date</label>
-            <input
-              type="text"
-              ngxDaterangepickerMd
-              [locale]="{ applyLabel: 'ok', firstDay: 1, format: 'YYYY-MM-DD' }"
-              startKey="start"
-              endKey="end"
-              name="daterange"
-              [autoApply]="true"
-              formControlName="selected"
-              class="form-control-lg form-control"
-              [minDate]="currentDate"
-              [linkedCalendars]="true"
-              [isInvalidDate]="isInvalidDate"
-              (datesUpdated)="selectedRangeInDays($event)"
-            />
+            <input type="text" ngxDaterangepickerMd [locale]="{ applyLabel: 'ok', firstDay: 1, format: 'YYYY-MM-DD' }"
+              startKey="start" endKey="end" name="daterange" [autoApply]="true" formControlName="selected"
+              class="form-control-lg form-control" [minDate]="currentDate" [linkedCalendars]="true"
+              [isInvalidDate]="isInvalidDate" (datesUpdated)="selectedRangeInDays($event)" />
           </div>
 
           <div class="fieldset-content">
             <div class="form-group">
               <label for="same">Same as your personal details?</label>
-              <input
-                type="checkbox"
-                name="same"
-                id="same"
-                (change)="copyPersonalData($event)"
-              />
+              <input type="checkbox" name="same" id="same" (change)="copyPersonalData($event)" />
             </div>
 
             <div class="form-row">
               <div class="form-flex">
                 <div class="form-group">
-                  <label class="form-label text-black" for="firstName"
-                    >First Name</label
-                  >
-                  <input
-                    type="text"
-                    id="firstName"
-                    class="form-control form-control-lg"
-                    formControlName="firstName"
-                    [ngClass]="{ error: isError('firstName', billingGroup) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <label class="form-label text-black" for="firstName">First Name</label>
+                  <input type="text" id="firstName" class="form-control form-control-lg" formControlName="firstName"
+                    [ngClass]="{ error: isError('firstName', billingGroup) }" />
+                  <div class="text-danger feedback" *ngIf="
                       billingGroup.get('firstName')?.hasError('required') &&
                       billingGroup.get('firstName')?.dirty
-                    "
-                  >
+                    ">
                     Please enter your first name
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="form-label text-black" for="lastName"
-                    >Last Name</label
-                  >
-                  <input
-                    type="text"
-                    id="lastName"
-                    class="form-control form-control-lg"
-                    formControlName="lastName"
-                    [ngClass]="{ error: isError('lastName', billingGroup) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <label class="form-label text-black" for="lastName">Last Name</label>
+                  <input type="text" id="lastName" class="form-control form-control-lg" formControlName="lastName"
+                    [ngClass]="{ error: isError('lastName', billingGroup) }" />
+                  <div class="text-danger feedback" *ngIf="
                       billingGroup.get('lastName')?.hasError('required') &&
                       billingGroup.get('lastName')?.dirty
-                    "
-                  >
+                    ">
                     Please enter your last name
                   </div>
                 </div>
@@ -254,21 +154,12 @@
 
             <span class="text-input">Street Address</span>
             <div class="form-group">
-              <input
-                type="text"
-                name="address"
-                id="address"
-                class="form-control form-control-lg"
-                formControlName="streetName"
-                [ngClass]="{ error: isError('streetName', billingGroup) }"
-              />
-              <div
-                class="text-danger feedback"
-                *ngIf="
+              <input type="text" name="address" id="address" class="form-control form-control-lg"
+                formControlName="streetName" [ngClass]="{ error: isError('streetName', billingGroup) }" />
+              <div class="text-danger feedback" *ngIf="
                   isError('streetName', billingGroup) &&
                   billingGroup.get('streetName')?.dirty
-                "
-              >
+                ">
                 Please enter a valid address
               </div>
             </div>
@@ -277,41 +168,23 @@
               <div class="form-flex">
                 <div class="form-group">
                   <span class="text-input">City</span>
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    class="form-control form-control-lg"
-                    formControlName="city"
-                    [ngClass]="{ error: isError('city', billingGroup) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <input type="text" name="city" id="city" class="form-control form-control-lg" formControlName="city"
+                    [ngClass]="{ error: isError('city', billingGroup) }" />
+                  <div class="text-danger feedback" *ngIf="
                       isError('city', billingGroup) &&
                       billingGroup.get('city')?.dirty
-                    "
-                  >
+                    ">
                     Please enter a valid city
                   </div>
                 </div>
                 <div class="form-group">
                   <span class="text-input">Postal Code / Zip Code</span>
-                  <input
-                    type="text"
-                    name="postal_code"
-                    id="postal_code"
-                    class="form-control form-control-lg"
-                    formControlName="zipCode"
-                    [ngClass]="{ error: isError('zipCode', billingGroup) }"
-                  />
-                  <div
-                    class="text-danger feedback"
-                    *ngIf="
+                  <input type="text" name="postal_code" id="postal_code" class="form-control form-control-lg"
+                    formControlName="zipCode" [ngClass]="{ error: isError('zipCode', billingGroup) }" />
+                  <div class="text-danger feedback" *ngIf="
                       isError('zipCode', billingGroup) &&
                       billingGroup.get('zipCode')?.dirty
-                    "
-                  >
+                    ">
                     Please enter a valid zip code
                   </div>
                 </div>
@@ -319,14 +192,10 @@
             </div>
           </div>
         </fieldset>
-        <div class="pt-1 mb-4 text-center">
+        <div class="pt-1 mt-4 text-center">
           <button class="palatin-btn" matStepperPrevious>Back</button>
-          <button
-            class="palatin-btn"
-            matStepperNext
-            [disabled]="billingGroup.invalid"
-            [ngClass]="{ disabled: billingGroup.invalid }"
-          >
+          <button class="palatin-btn" matStepperNext [disabled]="billingGroup.invalid"
+            [ngClass]="{ disabled: billingGroup.invalid }">
             Next
           </button>
         </div>
@@ -337,19 +206,41 @@
   <mat-step>
     <ng-template matStepLabel>Summary</ng-template>
 
-    <div class="container p-0" style="width: 50%">
-      <div
-        class="card background p-5"
-        style="border-radius: 1rem"
-      >
-        <p *ngIf="this.accommodation">{{this.accommodation.name}}</p>
+    <div class="container p-0">
+      <div class="card background p-5" style="border-radius: 1rem">
+        <h4 class="desc text-center">Reservation Summary</h4>
 
-        <p *ngIf="selectedDays">{{this.selectedDays + 1}} days / {{this.selectedDays}} nights</p>
+        <h5 class="text-center" *ngIf="this.accommodation">
+          {{ this.accommodation.name }}
+        </h5>
 
-        <h4 *ngIf="selectedDays">
-          Amount to pay:
+        <hr />
+
+        <p class="text-center">Address</p>
+        <h6 class="text-center" *ngIf="this.accommodation">
+          {{ this.accommodation.city }}, {{ this.accommodation.streetName }}
+        </h6>
+
+        <p class="text-center">Duration</p>
+        <h6 class="text-center" *ngIf="selectedDays">
+          {{ this.selectedDays + 1 }} days / {{ this.selectedDays }} nights
+        </h6>
+
+        <h6 class="text-center" *ngIf="selectedDays">
+          {{ this.formatDate(this.billingGroup.get("selected")?.value.start) }}
+          -
+          {{ this.formatDate(this.billingGroup.get("selected")?.value.end) }}
+        </h6>
+
+        <p class="text-center">Amount to play</p>
+        <h6 class="text-center" *ngIf="selectedDays">
           {{ selectedDays * this.accommodation.price }} Huf
-        </h4>
+        </h6>
+
+        <div class="pt-1 mt-4 text-center">
+          <button class="palatin-btn" matStepperPrevious>Back</button>
+          <button class="palatin-btn" matStepperNext>Pay</button>
+        </div>
       </div>
     </div>
 
@@ -357,24 +248,24 @@
     <!-- <h4 *ngIf="selectedDays">
       {{ selectedDays * this.accommodation.price }} Huf
     </h4> -->
-
-    <div class="pt-1 mb-4 text-center">
-      <button class="palatin-btn" matStepperPrevious>Back</button>
-      <button class="palatin-btn" matStepperNext>Pay</button>
-    </div>
   </mat-step>
 
   <mat-step>
-    <ng-template matStepLabel>Payment</ng-template>
+    <div class="container p-0">
+      <div class="card background p-5" style="border-radius: 1rem">
+        <ng-template matStepLabel>Payment</ng-template>
 
-    <div *ngIf="selectedDays">
-      Total amount to pay: {{ selectedDays * this.accommodation.price }}
-    </div>
-    <div>
-      Please do not refresh the browser while the transaction is processing
-    </div>
+        <!-- PayPal Logo -->
+        <img class="paypal-logo" src="../../../assets/img/core-img/pp_h_rgb.jpg" alt="paypallogo">
+        <!-- PayPal Logo -->
 
-    <div #paymentRef></div>
+        <div class="text-center m-4">
+          Please do not refresh the browser while the transaction is processing
+        </div>
+
+        <div class="paypal" #paymentRef></div>
+      </div>
+    </div>
   </mat-step>
 </mat-horizontal-stepper>
 

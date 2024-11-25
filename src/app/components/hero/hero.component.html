@@ -5,7 +5,8 @@
       <map-view [latitude]="47.034036" [longitude]="19.777492" [zoom]="14" [scrollwheel]="false"
         [streetViewControl]="false" [mapTypeControl]="false" [clickableIcons]="true">
         <map-marker *ngFor="let acc of accommodations" icon="../assets/img/icons/location.png" [latitude]="acc.latitude"
-          [longitude]="acc.longitude" [markerClickable]="true" (markerClick)="click(acc.id)"></map-marker>
+          [longitude]="acc.longitude" [markerClickable]="true" (markerClick)="click(acc.id)"
+          (mouseOver)="tootlip(acc.id)" title="{{ acc.name }}"></map-marker>
       </map-view>
     </div>
     <div class="carousel-inner">
