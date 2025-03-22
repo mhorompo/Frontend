@@ -145,6 +145,14 @@ export class BookNowComponent {
             }
           });
         },
+        onError: (err: any) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Something went wrong :(',
+            html: '<details> <summary> Show more detail </summary> ' + err.message + '</details>',
+            showConfirmButton: true,
+          });
+        }
       })
       .render(this.paymentRef.nativeElement);
 
