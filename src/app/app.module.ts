@@ -22,10 +22,8 @@ import { HeroComponent } from './components/hero/hero.component';
 import { ListAccommodationsComponent } from './components/list-accommodations/list-accommodations.component';
 import { LoginComponent } from './components/login/login.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { PoolAreaComponent } from './components/pool-area/pool-area.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegistComponent } from './components/regist/regist.component';
-import { RoomsAreaComponent } from './components/rooms-area/rooms-area.component';
 import { ViewAccommodationComponent } from './components/view-accommodation/view-accommodation.component';
 
 declare function load($: typeof jQuery): void;
@@ -40,8 +38,6 @@ declare function load($: typeof jQuery): void;
     HeroComponent,
     BookNowComponent,
     AboutUsComponent,
-    PoolAreaComponent,
-    RoomsAreaComponent,
     LoginComponent,
     RegistComponent,
     AboutUsComponent,

@@ -6,11 +6,11 @@ import { Reservation } from '../model/Reservation';
   providedIn: 'root'
 })
 export class ReservationService {
-  
+
   baseUrl: string = 'http://localhost:8080';
   constructor(private http: HttpClient) { }
 
-  reserveAccommodation(accommodationId: number, data: any){
+  reserveAccommodation(accommodationId: number, data: any) {
     let id;
     const userDataString = localStorage.getItem('login');
     if (userDataString) {

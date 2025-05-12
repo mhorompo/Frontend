@@ -7,8 +7,10 @@ import { AccommodationWithId } from 'src/app/model/AccommodationWithId';
 import { Reservation } from 'src/app/model/Reservation';
 import { User } from 'src/app/model/User';
 import { AccommodationService } from 'src/app/service/accommodation.service';
+import { PaymentService } from 'src/app/service/payment-service.service';
 import { ReservationService } from 'src/app/service/reservation.service';
 import Swal from 'sweetalert2';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-book-now',
@@ -35,7 +37,8 @@ export class BookNowComponent {
     private route: ActivatedRoute,
     private accommodationService: AccommodationService,
     private router: Router,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private paymentService: PaymentService
   ) {
     this.profileForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -123,14 +126,23 @@ export class BookNowComponent {
                   .get('selected')
                   ?.value.end.format('YYYY-MM-DD'),
                 price: this.amount,
-                transactionId: details.id,
               };
+
+              let reservationId = this.generateReservationID();
 
               this.reservationService
                 .reserveAccommodation(this.accommodation.id, data)
                 .subscribe((response) => {
                   console.log(response);
                 });
+
+              this.paymentService
+                .registerPayment(reservationId, data)
+                .subscribe((response) => {
+                  console.log(response)
+                });
+
+              this
 
               Swal.fire({
                 icon: 'success',
@@ -211,4 +223,10 @@ export class BookNowComponent {
   formatDate(date: any) {
     return date.format('YYYY. MM. DD');
   }
+
+  //uuid generalasa
+  generateReservationID(): string {
+    return uuidv4(); // Példa: "3f2504e0-4f89-11d3-9a0c-0305e82c3301"
+  }
 }
+

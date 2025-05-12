@@ -12,7 +12,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RegistComponent } from './components/regist/regist.component';
 import { ViewAccommodationComponent } from './components/view-accommodation/view-accommodation.component';
 import { AuthGuard } from './guard/auth.guard';
-import { CompletedPayComponent } from './components/completed-pay/completed-pay.component';
 
 const routes: Routes = [
   { path: 'not-found', component: NotFoundComponent },

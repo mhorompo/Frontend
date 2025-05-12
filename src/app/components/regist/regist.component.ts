@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { SignupUser } from 'src/app/model/Signupuser';
 import { User } from 'src/app/model/User';
 import { AuthService } from 'src/app/service/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-regist',
@@ -25,7 +26,7 @@ export class RegistComponent {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       roleEnum: ['', [Validators.required]],
-    }, {validator: this.passwordMatchValidator});
+    }, { validator: this.passwordMatchValidator });
   }
 
   ngOnInit() {
@@ -42,12 +43,29 @@ export class RegistComponent {
       lastName: this.registForm.get('lastName')?.value,
       roleEnum: this.registForm.get('roleEnum')?.value,
     };
-    this.auth.regist(data).subscribe((response: User) => {
-      if (response) {
-        localStorage.setItem('login', JSON.stringify(response));
-        this.router.navigateByUrl('/');
+    this.auth.regist(data).subscribe({
+      next: (response: User) => {
+        if (response) {
+          localStorage.setItem('login', JSON.stringify(response));
+          this.router.navigateByUrl('/');
+        }
+      },
+      error: (err) => {
+        if (err.error.message.includes('Email already in use')) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email already in use",
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Something went wrong!",
+            footer: err.error.message,
+          });
+        }
       }
-      console.log(response);
     });
   }
 
@@ -56,7 +74,7 @@ export class RegistComponent {
     return !!formControl?.errors && formControl.dirty;
   }
 
-  passwordMatchValidator(control: AbstractControl): ValidationErrors | null{
+  passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('passwordagain')?.value;
     return password === confirmPassword ? null : { passwordMismatch: true };
